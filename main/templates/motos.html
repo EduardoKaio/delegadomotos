@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%} Motos {% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/style_motos.css' %}"> {% endblock %}
+
+
+{% block main %}
+<main>
+  <section class="container-fluid">
+
+    {% for moto in motos %}
+    <div class="row">
+      <a class="col-3" href="{% url 'detalhes' %}">
+        <div class="card-moto">
+          <p class="marca">{{ moto.marca }}</p>
+          <p class="modelo">{{ moto.modelo }} {{ morto.cilindradas }}c</p>
+          <img class="img-fluid" src="/media/{{ moto.imagem_principal }}" alt="">
+          <p class="valor">Por R$ {{ moto.valor_vista }}</p>
+          <p class="vista">à vista <span>(10% de desconto)</span></p>
+          <p class="prazo">ou 24x de R$ 1.875,00 sem juros</p>
+          <!-- tem como fazer operações com os atributos? -->
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+
+  </section>
+
+</main>
+
+{% endblock %}

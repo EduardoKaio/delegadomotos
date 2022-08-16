@@ -1,0 +1,88 @@
+.titulos h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+    position: relative;
+    color: #292929;
+}
+
+.titulos h2::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+}
+
+.titulos h2::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #FFBA0A;
+    bottom: 0;
+    left: calc(50% - 20px);
+}
+
+.card-moto {
+    border: 1px solid #E1E1E1;
+    padding: 16px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    transform: scale(0.98);
+    transition: box-shadow 0.5s, transform 0.5s;
+}
+
+.card-moto:hover {
+    transform: scale(1);
+    border: 1px solid #FFBA0A;
+    box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-moto span {
+    color: #7AC41A;
+}
+
+.modelo {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.marca {
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.valor {
+    font-weight: 800;
+    font-size: 24px;
+}
+
+.vista {
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.prazo {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.card-moto p {
+    color: #292929;
+    margin: 0;
+}
+
+main a {
+    text-decoration: none;
+}
+
+main {
+    width: 80%;
+    margin: auto;
+}

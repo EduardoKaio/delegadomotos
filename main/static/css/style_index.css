@@ -1,0 +1,263 @@
+.principal {
+    background-color: #FFBA0A;
+}
+
+.principal section {
+    width: 80%;
+    margin: auto;
+    color: #ffffff;
+    padding: 60px 0;
+}
+
+h1 {
+    font-size: 60px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.tituloinicial {
+    padding-top: 10px;
+}
+
+.bt-comprar {
+    width: 8.5em;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.compra {
+    border-bottom: 1px solid #ffffff;
+    width: 60%;
+    padding-bottom: 20px;
+    font-size: 20px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.tituloinicial p {
+    margin: 30px 0;
+}
+
+.carousel-inner,
+.carousel,
+.slide {
+    border-radius: 10px;
+}
+
+.carrosel-padding {
+    padding: 0;
+}
+
+.legenda-carrosel {
+    margin-top: 12px;
+}
+
+.addrecente,
+.maispro {
+    height: 350px;
+    width: 80%;
+    margin: auto;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    background: #ffffff;
+    margin-bottom: 50px;
+}
+
+.addrecente h3,
+.maispro h3 {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 29px;
+    color: #292929;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 30px;
+}
+
+.motos-principal {
+    background: #F4F4F4;
+    padding: 70px 0 20px 0;
+}
+
+.titulos {
+    text-align: center;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.titulos h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+    position: relative;
+    color: #292929;
+}
+
+.titulos h2::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+}
+
+.titulos h2::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #FFBA0A;
+    bottom: 0;
+    left: calc(50% - 20px);
+}
+
+.sobre {
+    border: 1px solid #FFBA0A;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 80%;
+    margin: auto;
+    padding: 0 70px 70px 70px;
+    margin-top: 80px;
+}
+
+.sobre .container-fluid {
+    margin-top: 20px;
+}
+
+.legenda-sobre {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.sobre img {
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
+    border-radius: 5px;
+}
+
+.texto p {
+    text-align: justify;
+    width: 80%;
+    margin: auto;
+}
+
+.sobre .row {
+    display: flex;
+    align-items: center;
+}
+
+#segundo {
+    margin-top: 30px;
+}
+
+.contato {
+    background-color: #517490;
+    color: #ffffff;
+}
+
+.section-contact {
+    margin-top: 100px;
+}
+
+.mapa {
+    padding: 0;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.contato h2,
+.contato h3 {
+    color: #FFBA0A;
+    font-weight: 300;
+}
+
+.contato h2 {
+    font-size: 48px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.contato div {
+    margin: auto;
+    padding: 100px 0 200px 0;
+
+}
+
+.info {
+    text-align: justify;
+}
+
+.contNegrito {
+    font-weight: 700;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 0;
+    margin-top: 26px;
+    margin-bottom: 8px;
+}
+
+.fale-conosco {
+    position: absolute;
+    left: calc(40% - 60px);
+    height: 500px;
+    background: #213242;
+    border-radius: 5px;
+    padding: 42px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fale-conosco form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.fale-conosco input {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    margin-top: 16px;
+    height: 40px;
+    outline: none;
+    border: none;
+    padding: 20px;
+}
+
+textarea {
+    margin-top: 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    margin-top: 20px;
+    height: 160px;
+    outline: none;
+    border: none;
+    padding: 20px;
+    margin-bottom: 36px;
+}
+
+.fale-conosco input {
+    background-image: url("img/profile-user.svg");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 1.3em;
+    padding-left: 1.3em;
+}
+
+.bt-enviar {
+    width: 100%;
+    background-color: #FFBA0A;
+    color: #213242;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    height: 40px;
+}

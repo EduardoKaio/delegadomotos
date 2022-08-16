@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+nav {
+    width: 80%;
+    margin: auto;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-link {
+    color: #292929;
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.nav-link:visited {
+    color: #292929;
+}
+
+.nav-link:hover {
+    color: #FFBA0A;
+}
+
+.hamburguer {
+    color: #FFFFFF;
+    transform: scale(0.95);
+    transition: box-shadow 0.5s, transform 0.5s;
+}
+
+.hamburguer:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-1 {
+    padding: 0;
+    margin: 0;
+}
+
+.form-1 input {
+    margin: 0;
+}
+
+.form-1 button {
+    border: 1px solid #FFBA0A;
+    border-radius: 10px;
+    background-color: #ffffff;
+    border-collapse: separate;
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 186, 10, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+}
+
+.barra-navegacao {
+    margin-left: 50px;
+}
+
+.principal {
+    background-color: #FFBA0A;
+}
+
+.principal section {
+    width: 80%;
+    margin: auto;
+    color: #ffffff;
+    padding: 60px 0;
+}
+
+.pesquisar {
+    height: 34px;
+    border-radius: 10px;
+    border-color: #FFBA0A;
+}
+
+.pesquisar:focus {
+    border-color: #FFBA0A;
+    outline: none;
+}
+
+.delegado {
+    font-weight: 300;
+}
+
+.delegadoInfo {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.links li a {
+    text-decoration: none;
+    color: #292929;
+    font-size: 18px;
+    font-weight: 300;
+
+}
+
+.links ul {
+    padding: 0;
+}
+
+.links li {
+    list-style: none;
+    margin-bottom: 24px;
+}
+
+.link span {
+    transform: scale(0.95);
+    transition: font-weight 0.5s, transform 0.5s;
+}
+
+.links span:hover {
+    transform: scale(1);
+    font-weight: 400;
+}
+
+.links img {
+    margin-right: 16px;
+    width: 24px;
+
+}
+
+.footer1 {
+    width: 80%;
+    margin-top: 60px;
+}
+
+.redes-sociais svg {
+    width: 36px;
+    margin-right: 28px;
+    margin-bottom: 20px;
+    transform: scale(0.95);
+    transition: box-shadow 0.5s, transform 0.5s;
+}
+
+.redes-sociais svg:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.redes-sociais svg:hover path {
+    fill: #FFBA0A;
+}
+
+.conteudo-footer {
+    margin-top: 30px;
+}
+
+.footer2 {
+    background-color: #FFBA0A;
+    color: #FFFFFF;
+    padding: 0;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.footer2 .flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

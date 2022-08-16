@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%} Delegado Motos {% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/style_index.css' %}"> {% endblock %}
+
+
+
+{% block main %}
+<main>
+    <section class="principal container-fluid">
+        <section class="row d-flex justify-content-between">
+            <div class="col-xl-6 col-lg-12 tituloinicial">
+                <div>
+                    <h1>Delegado Motos</h1>
+
+                    <p class="compra">COMPRA, VENDE E TROCA</p>
+                    <p>“Impossível não comprar no Delegado Motos”</p>
+
+                    <button type="button" class="btn btn-light bt-comprar">Comprar</button>
+                </div>
+            </div>
+
+            <div class="col-xl-5 col-lg-10 col-md-8 col-sm-8 carrosel-padding">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                            aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                            aria-label="Slide 5"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
+                            aria-label="Slide 6"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{% static 'img/cliente1.jpeg' %}" class="d-block w-100" alt="Imagem dos clietes">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'img/cliente2.jpeg' %}" class="d-block w-100" alt="Imagem dos clietes">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'img/cliente3.jpeg' %}" class="d-block w-100" alt="Imagem dos clietes">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'img/cliente4.jpeg' %}" class="d-block w-100" alt="Imagem dos clietes">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'img/cliente5.jpeg' %}" class="d-block w-100" alt="Imagem dos clietes">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'img/cliente6.jpeg' %}" class="d-block w-100" alt="Imagem dos clietes">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <p class="legenda-carrosel d-flex justify-content-center">Alguns dos nossos clientes</p>
+
+            </div>
+        </section>
+
+    </section>
+    <section class="motos-principal">
+        <section class="addrecente">
+            <h3>Adicionados recentementes</h3>
+            <div class="container">
+                <div class="row">
+                    <div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="maispro">
+            <h3>Motos mais procuradas</h3>
+        </section>
+    </section>
+    <section id="link3" class="sobre">
+        <div class="titulos">
+            <h2>Sobre</h2>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-6 col-md-12">
+                    <img src="{% static 'img/sobre.jpeg' %}" class="img-fluid" alt="fachada da empresa Delegado Motos">
+                    <p class="legenda-sobre d-flex justify-content-center">Fachada da Delegado Motos</p>
+                </div>
+                <div class="col-xl-6 col-md-12 texto">
+                    <p>Na busca do meu primeiro empreedimento, decidi investir o pouco capital que possuía em
+                        uma moto para
+                        revenda. Iniciou-se assim a empresa Delegado Motos, no qual usei meu apelido para nomeá-la.
+                    </p>
+
+                    <p id="segundo">Aos poucos fomos crescendo e ganhando visibilidade na região alto oeste
+                        potiguar.
+                        Atualmente, contamos
+                        com funcionários, mais de vinte motos e alguns carros para escolha dos nossos clientes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="link4" class="section-contact container-fluid">
+        <div class="row">
+            <section class="contato col-xl-7 col-md-12 flex-lg-wrap">
+                <div class="row teste ">
+                    <section class="info  col-xl-3 col-lg-4 col-md-4">
+                        <h2>Contato</h2>
+                        <p class="contNegrito">Localização</p>
+                        <p>Av. Independência, N° 106 Centro CEP: 59.900-000. Pau dos Ferros - RN</p>
+
+                        <p class="contNegrito">Email</p>
+                        <p>delegadoveiculos@gmail.com</p>
+
+                        <p class="contNegrito">Telefones</p>
+                        <p>(84) 99648-9327</p>
+                        <p>(84) 99865-4469</p>
+                    </section>
+
+                    <section class="fale-conosco col-xl-3 col-lg-4 col-md-5 col-sm-7 col-8">
+
+                        <h3>Fale conosco</h3>
+
+                        <form action="">
+                            <input type="text" class="form" id="nome" placeholder="Nome">
+                            <input type="email" class="" id="email" placeholder="Email">
+
+                            <textarea placeholder="Escreva sua mensagem..." class="" id="escrevasuamensagem"
+                                rows="3"></textarea>
+                        </form>
+
+                        <button type="button" class=" bt-enviar">Enviar mensagem</button>
+
+                    </section>
+                </div>
+
+            </section>
+
+            <section class="col-xl-5 col-md-12 mapa">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.7987482174137!2d-38.20688051185376!3d-6.104424666222025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfbf9fc929b57a90e!2zNsKwMDYnMTUuOSJTIDM4wrAxMicyMi44Ilc!5e0!3m2!1spt-BR!2sbr!4v1656964368214!5m2!1spt-BR!2sbr"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            </section>
+        </div>
+    </section>
+
+
+</main>
+
+{% endblock %}
