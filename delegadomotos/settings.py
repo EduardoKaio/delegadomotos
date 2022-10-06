@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+"""
+EMAIL_HOST = 'localhost'
+EMAIL_HOST_USER = 'no-reply@seudominio.com.br'
+EMAIL_PORT = 587
+EMAIL_HOST_TSL = True 
+EMAIL_HOST_PASSWORD = 'sua-senha' 
+"""

@@ -1,6 +1,10 @@
 from json.encoder import INFINITY
 from django.db import models
 
+class Base(models.Model):
+    criado = models.DateField('Data de criação', auto_now_add=True)
+    modificado = models.DateField('Data de atualização')
+
 class Categoria(models.Model):
     nome = models.CharField(max_length=100)
     

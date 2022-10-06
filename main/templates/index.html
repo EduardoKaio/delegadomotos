@@ -19,8 +19,9 @@
 
                     <p class="compra">COMPRA, VENDE E TROCA</p>
                     <p>“Impossível não comprar no Delegado Motos”</p>
-
-                    <button type="button" class="btn btn-light bt-comprar">Comprar</button>
+                    <a href="{% url 'motos' %}">
+                        <button type="button" class="btn btn-light bt-comprar">Comprar</button>
+                    </a>
                 </div>
             </div>
 
@@ -94,7 +95,7 @@
             <h3>Motos mais procuradas</h3>
         </section>
     </section>
-    <section id="link3" class="sobre">
+    <section data-bs-spy="scroll" data-bs-root-margin="0px 0px -40%" id="scrollspyHeading1" class="sobre">
         <div class="titulos">
             <h2>Sobre</h2>
         </div>
@@ -120,7 +121,7 @@
         </div>
     </section>
 
-    <section id="link4" class="section-contact container-fluid">
+    <section id="scrollspyHeading2" class="section-contact container-fluid">
         <div class="row">
             <section class="contato col-xl-7 col-md-12 flex-lg-wrap">
                 <div class="row teste ">
@@ -141,16 +142,20 @@
 
                         <h3>Fale conosco</h3>
 
-                        <form action="">
-                            <input type="text" class="form" id="nome" placeholder="Nome">
-                            <input type="email" class="" id="email" placeholder="Email">
+                        <form action="{% url 'index' %}" method="post" autocomplete="off">
+
+                            {% csrf_token %}
+                            {{ form }}
+
+                            <!-- <input type="text" class="form" id="id_nome" placeholder="Nome">
+                            <input type="email" class="" id="id_email" placeholder="Email">
 
                             <textarea placeholder="Escreva sua mensagem..." class="" id="escrevasuamensagem"
-                                rows="3"></textarea>
+                                rows="3"></textarea> -->
+
+                            <button type="submit" class=" bt-enviar">Enviar mensagem</button>
+
                         </form>
-
-                        <button type="button" class=" bt-enviar">Enviar mensagem</button>
-
                     </section>
                 </div>
 

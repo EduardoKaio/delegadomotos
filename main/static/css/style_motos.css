@@ -1,3 +1,9 @@
+.titulos {
+    text-align: center;
+    padding-bottom: 1px;
+
+}
+
 .titulos h2 {
     font-size: 32px;
     font-weight: bold;
@@ -29,8 +35,28 @@
     left: calc(50% - 20px);
 }
 
+.breadcrumb {
+    margin-top: 30px
+}
+
+.filtro {
+    width: 18%;
+    margin-right: 4px;
+    border: solid 1px #FFBA0A;
+}
+
+.section-motos {
+    padding: 40px 0;
+}
+
+.col-xl-10 {
+    padding: 0;
+}
+
+
 .card-moto {
-    border: 1px solid #E1E1E1;
+    margin-bottom: 16px;
+    border: 0.5px solid #E1E1E1;
     padding: 16px;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
@@ -50,27 +76,27 @@
 
 .modelo {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .marca {
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .valor {
     font-weight: 800;
-    font-size: 24px;
+    font-size: 22px;
 }
 
 .vista {
     font-weight: 400;
-    font-size: 12px;
+    font-size: 10px;
 }
 
 .prazo {
     font-weight: 400;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .card-moto p {
@@ -86,3 +112,4 @@ main {
     width: 80%;
     margin: auto;
 }
+

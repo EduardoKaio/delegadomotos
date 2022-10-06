@@ -5,9 +5,181 @@
 {% block title%} Detalhes {% endblock %}
 
 {% block style %}
+
 <link rel="stylesheet" href="{% static 'css/style_detalhes.css' %}"> {% endblock %}
 
 {% block main %}
-<h1>DETALHES</h1>
+<main>
+    <section class="princ">
+        <div class="container-fluid">
+            <nav class="row"
+                style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+                aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Início</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'motos' %}">Motos</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ moto.modelo }} {{ moto.cilindradas }}c
+                    </li>
+                </ol>
+            </nav>
+
+            <div class="titulos row">
+                <h2>Motos</h2>
+            </div>
+        </div>
+
+        <section class="detalhes">
+            <div class="row">
+                <div class="col-xl-1">
+                    <p>dsadasds</p>
+                </div>
+                <div class="col-xl-7">
+                    <img width="90%" src="/media/{{ moto.imagem_principal }}" alt="imagem da moto selecionada">
+                </div>
+                <div class="col-xl-4 informacoes">
+                    <p class="ano-quil"><span class="span-ano">{{ moto.ano }}</span> {{ moto.quilometragem }}</p>
+                    <p class="modelo-cili">{{ moto.modelo }} {{ moto.cilindradas }}c</p>
+                    <p class="marca">{{ moto.marca }}</p>
+                    <p class="valor">R$ {{ moto.valor_vista }}</p>
+                    <button type="button" class="botao btn btn-success bt-comprar">Comprar</button>
+
+                    <div class="d-flex pagamento">
+                        <img src="{% static 'img/cartao.svg' %}" alt="imagem do cartão">
+                        <div>
+                            <p>R$ 22.500,00</p>
+                            <p>ou até em 18x de R$ 32.500,00</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex pagamento">
+                        <img src="{% static 'img/pix.svg' %}" alt="imagem do pix">
+                        <div>
+                            <p>R$ {{ moto.valor_vista }}</p>
+                            <p>exclusivo 1x no cartão de crédito ou pix</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex pagamento">
+                        <img src="{% static 'img/troca.svg' %}" alt="imagem do troca">
+                        <div>
+                            <p>Troca de motos</p>
+                            <p>Contate-me para negociarmos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="ficha">Ficha técnica</h4>
+
+            <section class="container-fluid">
+                <div class="row table-responsive">
+                    <table class="table table-striped table-hover">
+
+                        <tbody>
+                            <tr>
+                                <th scope="row">Modelo</th>
+                                <td>{{ moto.modelo }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Marca</th>
+                                <td>{{ moto.marca }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Ano</th>
+                                <td>{{ moto.ano }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Cor</th>
+                                <td>{{ moto.cor }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Cilindradas</th>
+                                <td>{{ moto.cilindradas }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Freios</th>
+                                <td>{{ moto.freio }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Quilometragem</th>
+                                <td>{{ moto.quilometragem }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Sistema de partida</th>
+                                <td>{{ moto.partida }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Emplacamento</th>
+                                <td>{{ moto.emplacamento }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Detalhes</th>
+                                <td>{{ moto.descricao }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </section>
+    </section>
+
+
+
+    <section class="motos-principal">
+        <section class="addrecente">
+            <h3>Adicionados recentementes</h3>
+            <div class="container">
+                <div class="row">
+                    <div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="maispro">
+            <h3>Motos mais procuradas</h3>
+        </section>
+    </section>
+
+    <div id="modal-contato" class="modal-container">
+        <div class="modal-cont">
+            <img class="fechar" src="{% static 'img/fechar.png' %}" alt="">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="primeira-coluna col-xl-6 col-lg-6 col-md-5 col-sm-5 col-5">
+                        <h4>Se interessou por esse modelo?</h3>
+                            <img src="{% static 'img/foto-modal-oficial.png' %}" class="img-fluid" width="230px" alt="">
+                    </div>
+                    <div class="segunda-coluna form-contato col-xl-5 col-lg-5 col-md-6 col-sm-6 col-6">
+                        <h5 class="h5-cont">Deixe suas informações abaixo para entrarmos em contato com você!</h5>
+
+                        <form class="form-modal" action="">
+                            <input class="form-control" type="text" name="" id="" placeholder="Nome completo">
+                            <input class="form-control" type="email" name="" id="" placeholder="Email">
+                            <input class="form-control" type="number" name="" id="" placeholder="Celular">
+
+                        </form>
+                        <button class="bt-enviar" type="submit">Enviar informações!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="modal-agradecimento" class="cont-agradecimento">
+        <div class="agradecer">
+            <img class="fechar" src="{% static 'img/fechar.png' %}" alt="">
+            <div class="obg">
+                <h4>Obrigado pela preferência!</h4>
+            </div>
+
+            <img class="foto-agradecimento" src="{% static 'img/foto-agradecimento.png' %}" width="230px" alt="">
+            <p>"Impossível não comprar no Delegado Motos"</p>
+        </div>
+    </div>
+</main>
+
 
 {% endblock %}
