@@ -123,23 +123,59 @@
         </section>
     </section>
 
-
-
     <section class="motos-principal">
         <section class="addrecente">
             <h3>Adicionados recentementes</h3>
             <div class="container">
                 <div class="row">
-                    <div>
+                    {% for moto in add_recente %}
+                    <div class="cartao col-xl-3 col-lg-4 col-md-4 col-sm-6 col-8">
+                        <a class="" href="{% url 'detalhes' moto.id %}">
+                            <div class="card-moto">
+                                <p class="marca">{{ moto.marca }}</p>
+                                <p class="modelo">{{ moto.modelo }} {{ moto.cilindradas }}c</p>
 
+                                <center>
+                                    <img class="img-fluid img-card" src="/media/{{ moto.imagem_principal }}" alt="">
+                                </center>
+
+                                <p class="valor">Por R$ {{ moto.valor_vista }}</p>
+                                <p class="vista">à vista <span>(10% de desconto)</span></p>
+                                <p class="prazo">ou 24x de R$ 1.875,00 sem juros</p>
+                            </div>
+                        </a>
                     </div>
+                    {% endfor %}
                 </div>
 
             </div>
         </section>
 
         <section class="maispro">
-            <h3>Motos mais procuradas</h3>
+            <h3>Motos mais baratas</h3>
+            <div class="container">
+                <div class="row">
+                    {% for moto in menor_valor %}
+                    <div class="cartao col-xl-3 col-lg-4 col-md-4 col-sm-6 col-8">
+                        <a class="" href="{% url 'detalhes' moto.id %}">
+                            <div class="card-moto">
+                                <p class="marca">{{ moto.marca }}</p>
+                                <p class="modelo">{{ moto.modelo }} {{ moto.cilindradas }}c</p>
+
+                                <center>
+                                    <img class="img-fluid img-card" src="/media/{{ moto.imagem_principal }}" alt="">
+                                </center>
+
+                                <p class="valor">Por R$ {{ moto.valor_vista }}</p>
+                                <p class="vista">à vista <span>(10% de desconto)</span></p>
+                                <p class="prazo">ou 24x de R$ 1.875,00 sem juros</p>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
         </section>
     </section>
 
@@ -155,18 +191,16 @@
                     <div class="segunda-coluna form-contato col-xl-5 col-lg-5 col-md-6 col-sm-6 col-6">
                         <h5 class="h5-cont">Deixe suas informações abaixo para entrarmos em contato com você!</h5>
 
-                        <form class="form-modal" action="">
-                            <input class="form-control" type="text" name="" id="" placeholder="Nome completo">
-                            <input class="form-control" type="email" name="" id="" placeholder="Email">
-                            <input class="form-control" type="number" name="" id="" placeholder="Celular">
-
+                        <form id="modal-form" action="{% url 'detalhes' moto.id %}" method="post" class="form-modal"
+                            autocomplete="off">
+                            {% csrf_token %}
+                            {{ form }}
+                            <button class="bt-enviar" type="submit">Enviar informações!</button>
                         </form>
-                        <button class="bt-enviar" type="submit">Enviar informações!</button>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
     <div id="modal-agradecimento" class="cont-agradecimento">
         <div class="agradecer">

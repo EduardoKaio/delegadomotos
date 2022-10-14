@@ -55,7 +55,7 @@
     border: 2px solid #E1E1E1;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
-    padding: 80px;
+    padding: 70px 80px;
 }
 
 .ficha {
@@ -64,7 +64,9 @@
     font-weight: 400;
     font-size: 30px;
 }
-
+.princ{
+    padding-bottom: 80px;
+}
 .table {
     width: 40%;
 }
@@ -76,33 +78,6 @@
 .span-ano {
     border-right: 1px solid #292929;
     padding-right: 5px;
-}
-
-.addrecente,
-.maispro {
-    height: 350px;
-    margin: auto;
-    width: 80%;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    background: #ffffff;
-    margin-bottom: 50px;
-}
-
-.addrecente h3,
-.maispro h3 {
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 29px;
-    color: #292929;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 30px;
-}
-
-.motos-principal {
-    margin: 80px 0 0 0;
-    background: #F4F4F4;
-    padding: 80px 0 20px 0;
 }
 
 .informacoes img {
@@ -213,7 +188,94 @@
     font-size: 18px;
     margin: 15px 0;
 }
+.errorlist{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: red;
+}
 
+
+.addrecente,
+.maispro {
+    width: 80%;
+    margin: auto;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    background: #ffffff;
+    margin-bottom: 50px;
+    padding: 30px;
+}
+.addrecente a, .maispro a{
+    text-decoration: none;
+}
+.cartao{
+    padding: 0 16px;
+}
+.card-moto {
+    margin-bottom: 16px;
+    border: 0.5px solid #E1E1E1;
+    padding: 16px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    transform: scale(0.98);
+    transition: box-shadow 0.5s, transform 0.5s;
+}
+
+.card-moto:hover {
+    transform: scale(1);
+    border: 1px solid #FFBA0A;
+    box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-moto span {
+    color: #7AC41A;
+}
+
+.modelo {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.marca {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.valor {
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.vista {
+    font-weight: 400;
+    font-size: 10px;
+}
+
+.prazo {
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.card-moto p {
+    color: #292929;
+    margin: 0;
+}
+
+.addrecente h3,
+.maispro h3 {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 29px;
+    color: #292929;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 5px 10px 10px 10px;
+}
+
+.motos-principal {
+    background: #F4F4F4;
+    padding: 70px 0 20px 0;
+}
 
 .bt-enviar {
     background: #213242;

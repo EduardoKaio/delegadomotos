@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load bootstrap4 %}
 
 {% block title%} Delegado Motos {% endblock %}
 
 {% block style %}
-<link rel="stylesheet" href="{% static 'css/style_index.css' %}"> {% endblock %}
+<link rel="stylesheet" href="{% static 'css/style_index.css' %}">
+{% endblock %}
 
 
 
@@ -83,19 +85,57 @@
             <h3>Adicionados recentementes</h3>
             <div class="container">
                 <div class="row">
-                    <div>
+                    {% for moto in add_recente %}
+                    <div class="cartao col-xl-3 col-lg-4 col-md-4 col-sm-6 col-8">
+                        <a class="" href="{% url 'detalhes' moto.id %}">
+                            <div class="card-moto">
+                                <p class="marca">{{ moto.marca }}</p>
+                                <p class="modelo">{{ moto.modelo }} {{ moto.cilindradas }}c</p>
 
+                                <center>
+                                    <img class="img-fluid img-card" src="/media/{{ moto.imagem_principal }}" alt="">
+                                </center>
+
+                                <p class="valor">Por R$ {{ moto.valor_vista }}</p>
+                                <p class="vista">à vista <span>(10% de desconto)</span></p>
+                                <p class="prazo">ou 24x de R$ 1.875,00 sem juros</p>
+                            </div>
+                        </a>
                     </div>
+                    {% endfor %}
                 </div>
 
             </div>
         </section>
 
         <section class="maispro">
-            <h3>Motos mais procuradas</h3>
+            <h3>Motos mais baratas</h3>
+            <div class="container">
+                <div class="row">
+                    {% for moto in menor_valor %}
+                    <div class="cartao col-xl-3 col-lg-4 col-md-4 col-sm-6 col-8">
+                        <a class="" href="{% url 'detalhes' moto.id %}">
+                            <div class="card-moto">
+                                <p class="marca">{{ moto.marca }}</p>
+                                <p class="modelo">{{ moto.modelo }} {{ moto.cilindradas }}c</p>
+
+                                <center>
+                                    <img class="img-fluid img-card" src="/media/{{ moto.imagem_principal }}" alt="">
+                                </center>
+
+                                <p class="valor">Por R$ {{ moto.valor_vista }}</p>
+                                <p class="vista">à vista <span>(10% de desconto)</span></p>
+                                <p class="prazo">ou 24x de R$ 1.875,00 sem juros</p>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
         </section>
     </section>
-    <section data-bs-spy="scroll" data-bs-root-margin="0px 0px -40%" id="scrollspyHeading1" class="sobre">
+    <section data-bs-spy="scroll" data-bs-root-margin="0px 0px -40%" id="link-sobre" class="sobre">
         <div class="titulos">
             <h2>Sobre</h2>
         </div>
@@ -121,57 +161,35 @@
         </div>
     </section>
 
-    <section id="scrollspyHeading2" class="section-contact container-fluid">
-        <div class="row">
-            <section class="contato col-xl-7 col-md-12 flex-lg-wrap">
-                <div class="row teste ">
-                    <section class="info  col-xl-3 col-lg-4 col-md-4">
-                        <h2>Contato</h2>
-                        <p class="contNegrito">Localização</p>
-                        <p>Av. Independência, N° 106 Centro CEP: 59.900-000. Pau dos Ferros - RN</p>
+    <section id="link-contato" class="section-contact container-fluid">
+        <div class="titulos">
+            <h2>Fale conosco</h2>
+        </div>
+        <div class="row d-flex justify-content-evenly">
 
-                        <p class="contNegrito">Email</p>
-                        <p>delegadoveiculos@gmail.com</p>
+            <section class="fale-conosco col-xl-4 col-lg-5 col-md-7 col-sm-7 col-8">
 
-                        <p class="contNegrito">Telefones</p>
-                        <p>(84) 99648-9327</p>
-                        <p>(84) 99865-4469</p>
-                    </section>
+                <form action="#link-contato" method="post" autocomplete="off">
 
-                    <section class="fale-conosco col-xl-3 col-lg-4 col-md-5 col-sm-7 col-8">
+                    {% csrf_token %}
+                    {{ form }}
 
-                        <h3>Fale conosco</h3>
+                    <button type="submit" class="bt-enviar">Enviar mensagem</button>
 
-                        <form action="{% url 'index' %}" method="post" autocomplete="off">
-
-                            {% csrf_token %}
-                            {{ form }}
-
-                            <!-- <input type="text" class="form" id="id_nome" placeholder="Nome">
-                            <input type="email" class="" id="id_email" placeholder="Email">
-
-                            <textarea placeholder="Escreva sua mensagem..." class="" id="escrevasuamensagem"
-                                rows="3"></textarea> -->
-
-                            <button type="submit" class=" bt-enviar">Enviar mensagem</button>
-
-                        </form>
-                    </section>
-                </div>
-
+                </form>
             </section>
 
-            <section class="col-xl-5 col-md-12 mapa">
+            <section class="col-xl-4 col-lg-5 col-md-7 col-sm-7 col-8 mapa">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.7987482174137!2d-38.20688051185376!3d-6.104424666222025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfbf9fc929b57a90e!2zNsKwMDYnMTUuOSJTIDM4wrAxMicyMi44Ilc!5e0!3m2!1spt-BR!2sbr!4v1656964368214!5m2!1spt-BR!2sbr"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
 
             </section>
+
         </div>
     </section>
 
 
 </main>
-
 {% endblock %}
