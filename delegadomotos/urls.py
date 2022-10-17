@@ -26,3 +26,7 @@ urlpatterns = [
     path('motos/', motos, name='motos'),
     path('detalhes/<int:id>', detalhes, name='detalhes'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+
+admin.AdminSite.site_header = 'Sistema da Delegado Motos'
+admin.AdminSite.site_title = 'Delegado Motos'
+admin.AdminSite.index_title = 'Delegado Motos'

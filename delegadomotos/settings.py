@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from django.contrib.messages import constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,6 +33,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_adminlte',
+    'django_adminlte_theme',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,7 +44,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'bootstrap4',
+    'widget_tweaks',
 ]
+MESSAGE_TAGS = {
+constants.DEBUG: 'alert-primary',
+constants.ERROR: 'alert-danger',
+constants.SUCCESS: 'alert-success',
+constants.INFO: 'alert-info',
+constants.WARNING: 'alert-warning',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -202,7 +202,8 @@
             </div>
         </div>
     </div>
-    <div id="modal-agradecimento" class="cont-agradecimento">
+    {% if viewModal %}
+    <div id="modal-agradecimento" class="cont-agradecimento mostrar">
         <div class="agradecer">
             <img class="fechar" src="{% static 'img/fechar.png' %}" alt="">
             <div class="obg">
@@ -213,6 +214,7 @@
             <p>"Impossível não comprar no Delegado Motos"</p>
         </div>
     </div>
+    {% endif %}
 </main>
 
 

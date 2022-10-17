@@ -17,12 +17,13 @@ btCot.addEventListener('click', function () {
     iniciaModal('modal-contato');
 });
 
-const form = document.getElementById('modal-form')
-form.addEventListener('submit', function () {
-    const modal = document.getElementById('modal-contato')
-    modal.classList.remove('mostrar');
-    iniciaModal('modal-agradecimento');
+const modalAgrad = document.getElementById('modal-agradecimento')
+modalAgrad.addEventListener('click', function (e){
+    if (e.target.id == 'modal-agradecimento' || e.target.className == 'fechar' ) {
+        modalAgrad.classList.remove('mostrar')
+    }
 });
+
 
 
 // const btAgrad = document.querySelector('.bt-enviar');
@@ -31,14 +32,6 @@ form.addEventListener('submit', function () {
 //     })
 
 
-
-
-
-
-//scroll aparencendo
-const elementos = document.querySelectorAll('[data-animate]');
-
-//scrollTop
 
 
 function mascara(telefone){ 

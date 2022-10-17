@@ -39,11 +39,10 @@
     margin-top: 30px
 }
 
-.filtro {
-    width: 18%;
+.filtro { 
     margin-right: 4px;
-    border: solid 1px #FFBA0A;
 }
+
 
 .section-motos {
     padding: 40px 0;
@@ -52,8 +51,37 @@
 .col-xl-10 {
     padding: 0;
 }
+.form-filtro div label{
+    font-weight: 400;
+    margin-left: 5px;
+}
+.form-filtro div{
+    margin-bottom: 8px;
+}
+.cartao{
+    padding: 0 10px;
+}
 
-
+hr:not([size]) {
+    height: 2px;
+}
+hr{
+    color: #FFBA0A;
+    height: 12px;
+}
+.title-check{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.form-check-input:checked {
+    background-color: #FFBA0A;
+    border-color: #FFBA0A;
+}
+.form-check-input{
+    height: 18px;
+    width: 18px;
+}
 .card-moto {
     margin-bottom: 16px;
     border: 0.5px solid #E1E1E1;
