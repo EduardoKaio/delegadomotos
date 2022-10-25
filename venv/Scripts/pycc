@@ -1,0 +1,3 @@
+#!C:\Users\Kayn\Desktop\DelegadoMotos\venv\Scripts\python.exe
+from numba.pycc import main
+main()

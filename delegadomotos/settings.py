@@ -32,10 +32,11 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
 INSTALLED_APPS = [
-    'django_adminlte',
-    'django_adminlte_theme',
-    
+    # 'django_adminlte',
+    # 'django_adminlte_theme',
+    'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'main',
     'bootstrap4',
     'widget_tweaks',
+    'mathfilters'
 ]
 MESSAGE_TAGS = {
 constants.DEBUG: 'alert-primary',

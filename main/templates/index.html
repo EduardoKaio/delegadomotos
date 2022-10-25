@@ -2,6 +2,8 @@
 
 {% load static %}
 {% load bootstrap4 %}
+{% load mathfilters %}
+{% load humanize %}
 
 {% block title%} Delegado Motos {% endblock %}
 
@@ -9,6 +11,8 @@
 <link rel="stylesheet" href="{% static 'css/style_index.css' %}">
 {% endblock %}
 
+{% block sobre %} #link-sobre {% endblock %}
+{% block contato %} #link-contato {% endblock %}
 
 
 {% block main %}
@@ -22,7 +26,7 @@
                     <p class="compra">COMPRA, VENDE E TROCA</p>
                     <p>“Impossível não comprar no Delegado Motos”</p>
                     <a href="{% url 'motos' %}">
-                        <button type="button" class="btn btn-light bt-comprar">Comprar</button>
+                        <button type="button" class="btn bt-comprar">Comprar</button>
                     </a>
                 </div>
             </div>
@@ -93,12 +97,14 @@
                                 <p class="modelo">{{ moto.modelo }} {{ moto.cilindradas }}c</p>
 
                                 <center>
-                                    <img class="img-fluid img-card" src="/media/{{ moto.imagem_principal }}" alt="">
+                                    <img class="img-fluid img-card" src="/media/{{ moto.imagens.imagem_sem_fundo }}"
+                                        alt="">
                                 </center>
 
-                                <p class="valor">Por R$ {{ moto.valor_vista }}</p>
-                                <p class="vista">à vista <span>(10% de desconto)</span></p>
-                                <p class="prazo">ou 24x de R$ 1.875,00 sem juros</p>
+                                <p class="valor">Por R$ {{ moto.preco|intcomma  }}</p>
+                                <p class="vista">à vista <span>(com de desconto)</span></p>
+                                <p class="prazo">ou 18x de R$ {{ moto.preco|mul:1.025|div:18|floatformat:2 }} com juros
+                                </p>
                             </div>
                         </a>
                     </div>
@@ -112,7 +118,7 @@
             <h3>Motos mais baratas</h3>
             <div class="container">
                 <div class="row">
-                    {% for moto in menor_valor %}
+                    {% for moto in menor_preco %}
                     <div class="cartao col-xl-3 col-lg-4 col-md-4 col-sm-6 col-8">
                         <a class="" href="{% url 'detalhes' moto.id %}">
                             <div class="card-moto">
@@ -120,12 +126,13 @@
                                 <p class="modelo">{{ moto.modelo }} {{ moto.cilindradas }}c</p>
 
                                 <center>
-                                    <img class="img-fluid img-card" src="/media/{{ moto.imagem_principal }}" alt="">
+                                    <img class="img-fluid img-card" src="/media/{{ moto.imagens.imagem_sem_fundo }}"
+                                        alt="">
                                 </center>
 
-                                <p class="valor">Por R$ {{ moto.valor_vista }}</p>
-                                <p class="vista">à vista <span>(10% de desconto)</span></p>
-                                <p class="prazo">ou 24x de R$ 1.875,00 sem juros</p>
+                                <p class="valor">Por R$ {{ valor_total }}</p>
+                                <p class="vista">à vista <span>(com de desconto)</span></p>
+                                <p class="prazo">ou 18x de R$ {{ valor_parcela }} com juros</p>
                             </div>
                         </a>
                     </div>

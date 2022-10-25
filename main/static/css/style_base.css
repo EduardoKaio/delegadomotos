@@ -15,6 +15,7 @@ header {
     width: 100%;
     z-index: 999;
     background: #FFFFFF;
+    opacity: 0.94;
 }
 
 .pre {
@@ -30,7 +31,6 @@ header {
     width: 80%;
     margin: auto;
 }
-
 
 .nav-link {
     color: #292929;
@@ -110,6 +110,7 @@ header {
 i .icone-pesquisar{
     visibility: visible;
     cursor: pointer;
+    position: absolute;
 }
 
 .delegado {

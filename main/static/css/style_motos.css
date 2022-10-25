@@ -42,10 +42,17 @@
 .filtro { 
     margin-right: 4px;
 }
-
+.bt-buscar{
+    margin-top: 16px;
+}
 
 .section-motos {
     padding: 40px 0;
+}
+
+.empty{
+    font-weight: 400;
+
 }
 
 .col-xl-10 {
@@ -90,6 +97,7 @@ hr{
     border-radius: 10px;
     transform: scale(0.98);
     transition: box-shadow 0.5s, transform 0.5s;
+    height: 95%;
 }
 
 .card-moto:hover {

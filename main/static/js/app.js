@@ -1,4 +1,3 @@
-
 function iniciaModal(modalID) {
     const modal = document.getElementById(modalID)
     if (modal) {
@@ -32,6 +31,30 @@ modalAgrad.addEventListener('click', function (e){
 //     })
 
 
+function imgPrincipal() {
+    var source = document.getElementById("imgPrincipal").src;
+    document.getElementById("trocarImg").src=source;
+}
+
+function img1() {
+    var source = document.getElementById("img1").src;
+    document.getElementById("trocarImg").src=source;
+}
+
+function img2() {
+    var source = document.getElementById("img2").src;
+    document.getElementById("trocarImg").src=source;
+}
+
+function img3() {
+    var source = document.getElementById("img3").src;
+    document.getElementById("trocarImg").src=source;
+}
+
+function img4() {
+    var source = document.getElementById("img4").src;
+    document.getElementById("trocarImg").src=source;
+}
 
 
 function mascara(telefone){ 

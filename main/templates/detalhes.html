@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load mathfilters %}
+{% load humanize %}
 
 {% block title%} Detalhes {% endblock %}
 
@@ -8,6 +10,8 @@
 
 <link rel="stylesheet" href="{% static 'css/style_detalhes.css' %}"> {% endblock %}
 
+{% block sobre %} {% url 'index' %}#link-sobre {% endblock %}
+{% block contato %} {% url 'index' %}#link-contato {% endblock %}
 {% block main %}
 <main>
     <section class="princ">
@@ -28,33 +32,60 @@
             </div>
         </div>
 
-        <section class="detalhes">
-            <div class="row">
-                <div class="col-xl-1">
-                    <p>dsadasds</p>
+        <section class="detalhes container-fluid">
+
+            <div class="row d-flex justify-content-around imagemPreco">
+
+                <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2 d-flex justify-content-around motos-imagens">
+                    <div>
+                        <img class="img-fluid" src="/media/{{ moto.imagens.imagem_principal }}" id="imgPrincipal"
+                            onclick="imgPrincipal();" alt="imagem da moto selecionada">
+
+
+                        <img class="img-fluid" src="/media/{{ moto.imagens.imagem1 }}" id="img1" onclick="img1();"
+                            alt="imagem da moto selecionada">
+
+
+
+                        <img class="img-fluid" src="/media/{{ moto.imagens.imagem2 }}" id="img2" onclick="img2();"
+                            alt="imagem da moto selecionada">
+
+
+
+                        <img class="img-fluid" src="/media/{{ moto.imagens.imagem3 }}" id="img3" onclick="img3();"
+                            alt="imagem da moto selecionada">
+
+
+
+                        <img class="img-fluid" src="/media/{{ moto.imagens.imagem4 }}" id="img4" onclick="img4();"
+                            alt="imagem da moto selecionada">
+
+                    </div>
                 </div>
-                <div class="col-xl-7">
-                    <img width="90%" src="/media/{{ moto.imagem_principal }}" alt="imagem da moto selecionada">
+                <div class="col-xl-6 col-lg-9 col-md-9 col-sm-12 col-12 imagem-principal">
+                    <img class=" img-fluid " src="/media/{{ moto.imagens.imagem_principal }}" id="trocarImg"
+                        alt="imagem da moto selecionada">
                 </div>
                 <div class="col-xl-4 informacoes">
+
                     <p class="ano-quil"><span class="span-ano">{{ moto.ano }}</span> {{ moto.quilometragem }}</p>
                     <p class="modelo-cili">{{ moto.modelo }} {{ moto.cilindradas }}c</p>
                     <p class="marca">{{ moto.marca }}</p>
-                    <p class="valor">R$ {{ moto.valor_vista }}</p>
-                    <button type="button" class="botao btn btn-success bt-comprar">Comprar</button>
+                    <p class="valor">R$ {{ moto.preco|intcomma   }}</p>
+                    <button type="button" class="botao btn  bt-comprar">Comprar</button>
 
                     <div class="d-flex pagamento">
                         <img src="{% static 'img/cartao.svg' %}" alt="imagem do cartão">
                         <div>
-                            <p>R$ 22.500,00</p>
-                            <p>ou até em 18x de R$ 32.500,00</p>
+                            <p>R$ {{ moto.preco|intcomma  }}</p>
+                            <p>ou até em 18x de R$ {{ moto.preco|mul:1.025|div:18|floatformat:2}} com juros</p>
                         </div>
                     </div>
 
                     <div class="d-flex pagamento">
                         <img src="{% static 'img/pix.svg' %}" alt="imagem do pix">
                         <div>
-                            <p>R$ {{ moto.valor_vista }}</p>
+                            <p>R$ {{ moto.preco|intcomma   }}</p>
                             <p>exclusivo 1x no cartão de crédito ou pix</p>
                         </div>
                     </div>
@@ -136,12 +167,13 @@
                                 <p class="modelo">{{ moto.modelo }} {{ moto.cilindradas }}c</p>
 
                                 <center>
-                                    <img class="img-fluid img-card" src="/media/{{ moto.imagem_principal }}" alt="">
+                                    <img class="img-fluid img-card" src="/media/{{ moto.imagens.imagem_sem_fundo }}"
+                                        alt="">
                                 </center>
 
-                                <p class="valor">Por R$ {{ moto.valor_vista }}</p>
-                                <p class="vista">à vista <span>(10% de desconto)</span></p>
-                                <p class="prazo">ou 24x de R$ 1.875,00 sem juros</p>
+                                <p class="valor">Por R$ {{ valor_total }}</p>
+                                <p class="vista">à vista <span>(com de desconto)</span></p>
+                                <p class="prazo">ou 18x de R$ {{ valor_parcela }} com juros</p>
                             </div>
                         </a>
                     </div>
@@ -155,7 +187,7 @@
             <h3>Motos mais baratas</h3>
             <div class="container">
                 <div class="row">
-                    {% for moto in menor_valor %}
+                    {% for moto in menor_preco %}
                     <div class="cartao col-xl-3 col-lg-4 col-md-4 col-sm-6 col-8">
                         <a class="" href="{% url 'detalhes' moto.id %}">
                             <div class="card-moto">
@@ -163,12 +195,13 @@
                                 <p class="modelo">{{ moto.modelo }} {{ moto.cilindradas }}c</p>
 
                                 <center>
-                                    <img class="img-fluid img-card" src="/media/{{ moto.imagem_principal }}" alt="">
+                                    <img class="img-fluid img-card" src="/media/{{ moto.imagens.imagem_sem_fundo }}"
+                                        alt="">
                                 </center>
 
-                                <p class="valor">Por R$ {{ moto.valor_vista }}</p>
-                                <p class="vista">à vista <span>(10% de desconto)</span></p>
-                                <p class="prazo">ou 24x de R$ 1.875,00 sem juros</p>
+                                <p class="valor">Por R$ {{ valor_total }}</p>
+                                <p class="vista">à vista <span>(com de desconto)</span></p>
+                                <p class="prazo">ou 18x de R$ {{ valor_parcela }} com juros</p>
                             </div>
                         </a>
                     </div>
