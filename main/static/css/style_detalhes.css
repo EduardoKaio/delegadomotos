@@ -178,7 +178,20 @@
     justify-content: space-between;
 }
 
-
+.imagem-principal{
+    border: 1px solid #dddddd;
+}
+.imagem-principal img {
+    width: 100%;
+    height: 100%;
+}
+.motos-imagens div div {
+    border: 1px solid #dddddd;
+}
+.motos-imagens div div img{
+    width: 100%;
+    height: 100%;
+}
 
 .motos-imagens img {
 
@@ -234,8 +247,15 @@
 .addrecente a, .maispro a{
     text-decoration: none;
 }
-.cartao{
-    padding: 0 16px;
+.img-card{
+    margin: 2px 0;
+  }
+.card-moto .img-card img{
+    max-height: 10.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 .card-moto {
     margin-bottom: 16px;
@@ -245,7 +265,9 @@
     border-radius: 10px;
     transform: scale(0.98);
     transition: box-shadow 0.5s, transform 0.5s;
-    height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .card-moto:hover {
@@ -393,4 +415,29 @@
 
 .agradecer p {
     font-weight: 500;
+}
+
+
+[data-anime]{
+    opacity: 0;
+    transition: all 1s ease 0s;
+}
+
+[data-anime="left"]{
+    transform: translate3d(-50px, 0, 0);
+}
+
+
+[data-anime="rigth"]{
+    transform: translate3d(50px, 0, 0);
+}
+
+
+[data-anime="up"]{
+    transform: translate3d(0, 50px, 0);
+}
+
+[data-anime].animate{
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px);
 }

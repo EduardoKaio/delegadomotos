@@ -202,3 +202,60 @@ footer {
 main {
     margin-top: 75px;
 }
+
+
+[data-anime]{
+    opacity: 0;
+    transition: all 1s ease 0s;
+}
+
+[data-anime="left"]{
+    transform: translate3d(-50px, 0, 0);
+}
+
+
+[data-anime="rigth"]{
+    transform: translate3d(50px, 0, 0);
+}
+
+
+[data-anime="up"]{
+    transform: translate3d(0, 50px, 0);
+}
+
+[data-anime].animate{
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px);
+}
+
+.back-to-top {
+    position: fixed;
+    display: block;
+    right: 15px;
+    bottom: 15px;
+    z-index: 99999;
+
+}
+.back-to-top svg path{
+    fill: #FFBA0A;
+
+}
+
+  
+.back-to-top svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    background: #FFFFFF;
+    color: #fff;
+    transition: all 0.4s;
+  }
+
+.back-to-top svg path:hover, .back-to-top a:hover {
+    background: #fff;
+    fill: #DBA009;
+}

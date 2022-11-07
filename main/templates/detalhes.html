@@ -14,7 +14,7 @@
 {% block contato %} {% url 'index' %}#link-contato {% endblock %}
 {% block main %}
 <main>
-    <section class="princ">
+    <section data-anime="up" class="princ">
         <div class="container-fluid">
             <nav class="row"
                 style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
@@ -34,32 +34,34 @@
 
         <section class="detalhes container-fluid">
 
-            <div class="row d-flex justify-content-around imagemPreco">
+            <div data-anime="up" class="row d-flex justify-content-around imagemPreco">
 
-                <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2 d-flex justify-content-around motos-imagens">
+                <div class="col-xl-1 col-lg-2 col-md-2 col-sm-4 col-3 d-flex justify-content-around motos-imagens">
                     <div>
-                        <img class="img-fluid" src="/media/{{ moto.imagens.imagem_principal }}" id="imgPrincipal"
-                            onclick="imgPrincipal();" alt="imagem da moto selecionada">
+                        <div>
+                            <img class="img-fluid " src="/media/{{ moto.imagens.imagem_principal }}" id="imgPrincipal"
+                                onclick="imgPrincipal();" alt="imagem da moto selecionada">
+                        </div>
+                        <div>
 
+                            <img class="img-fluid" src="/media/{{ moto.imagens.imagem1 }}" id="img1" onclick="img1();"
+                                alt="imagem da moto selecionada">
+                        </div>
 
-                        <img class="img-fluid" src="/media/{{ moto.imagens.imagem1 }}" id="img1" onclick="img1();"
-                            alt="imagem da moto selecionada">
+                        <div>
+                            <img class="img-fluid" src="/media/{{ moto.imagens.imagem2 }}" id="img2" onclick="img2();"
+                                alt="imagem da moto selecionada">
+                        </div>
 
+                        <div>
+                            <img class="img-fluid" src="/media/{{ moto.imagens.imagem3 }}" id="img3" onclick="img3();"
+                                alt="imagem da moto selecionada">
+                        </div>
 
-
-                        <img class="img-fluid" src="/media/{{ moto.imagens.imagem2 }}" id="img2" onclick="img2();"
-                            alt="imagem da moto selecionada">
-
-
-
-                        <img class="img-fluid" src="/media/{{ moto.imagens.imagem3 }}" id="img3" onclick="img3();"
-                            alt="imagem da moto selecionada">
-
-
-
-                        <img class="img-fluid" src="/media/{{ moto.imagens.imagem4 }}" id="img4" onclick="img4();"
-                            alt="imagem da moto selecionada">
-
+                        <div>
+                            <img class="img-fluid" src="/media/{{ moto.imagens.imagem4 }}" id="img4" onclick="img4();"
+                                alt="imagem da moto selecionada">
+                        </div>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-9 col-md-9 col-sm-12 col-12 imagem-principal">
@@ -101,7 +103,7 @@
             </div>
             <h4 class="ficha">Ficha técnica</h4>
 
-            <section class="container-fluid">
+            <section data-anime="up" class="container-fluid">
                 <div class="row table-responsive">
                     <table class="table table-striped table-hover">
 
@@ -155,7 +157,7 @@
     </section>
 
     <section class="motos-principal">
-        <section class="addrecente">
+        <section data-anime="up" class="addrecente">
             <h3>Adicionados recentementes</h3>
             <div class="container">
                 <div class="row">
@@ -163,17 +165,22 @@
                     <div class="cartao col-xl-3 col-lg-4 col-md-4 col-sm-6 col-8">
                         <a class="" href="{% url 'detalhes' moto.id %}">
                             <div class="card-moto">
+
                                 <p class="marca">{{ moto.marca }}</p>
                                 <p class="modelo">{{ moto.modelo }} {{ moto.cilindradas }}c</p>
-
                                 <center>
-                                    <img class="img-fluid img-card" src="/media/{{ moto.imagens.imagem_sem_fundo }}"
-                                        alt="">
-                                </center>
+                                    <div class="img-card">
 
-                                <p class="valor">Por R$ {{ valor_total }}</p>
+                                        <img class="img-fluid" src="/media/{{ moto.imagens.imagem_sem_fundo }}" alt="">
+
+                                    </div>
+                                </center>
+                                <p class="valor">Por R$ {{ moto.preco|intcomma  }}</p>
                                 <p class="vista">à vista <span>(com de desconto)</span></p>
-                                <p class="prazo">ou 18x de R$ {{ valor_parcela }} com juros</p>
+                                <p class="prazo">ou 18x de R$ {{ moto.preco|mul:1.025|div:18|floatformat:2 }} com
+                                    juros
+                                </p>
+
                             </div>
                         </a>
                     </div>
@@ -183,7 +190,7 @@
             </div>
         </section>
 
-        <section class="maispro">
+        <section data-anime="up" class="maispro">
             <h3>Motos mais baratas</h3>
             <div class="container">
                 <div class="row">
@@ -191,17 +198,22 @@
                     <div class="cartao col-xl-3 col-lg-4 col-md-4 col-sm-6 col-8">
                         <a class="" href="{% url 'detalhes' moto.id %}">
                             <div class="card-moto">
+
                                 <p class="marca">{{ moto.marca }}</p>
                                 <p class="modelo">{{ moto.modelo }} {{ moto.cilindradas }}c</p>
-
                                 <center>
-                                    <img class="img-fluid img-card" src="/media/{{ moto.imagens.imagem_sem_fundo }}"
-                                        alt="">
-                                </center>
+                                    <div class="img-card">
 
-                                <p class="valor">Por R$ {{ valor_total }}</p>
+                                        <img class="img-fluid" src="/media/{{ moto.imagens.imagem_sem_fundo }}" alt="">
+
+                                    </div>
+                                </center>
+                                <p class="valor">Por R$ {{ moto.preco|intcomma  }}</p>
                                 <p class="vista">à vista <span>(com de desconto)</span></p>
-                                <p class="prazo">ou 18x de R$ {{ valor_parcela }} com juros</p>
+                                <p class="prazo">ou 18x de R$ {{ moto.preco|mul:1.025|div:18|floatformat:2 }} com
+                                    juros
+                                </p>
+
                             </div>
                         </a>
                     </div>
@@ -252,3 +264,5 @@
 
 
 {% endblock %}
+{% block fotsobre %} {% url 'index' %}#link-sobre {% endblock %}
+{% block fotcontato %} {% url 'index' %}#link-contato {% endblock %}

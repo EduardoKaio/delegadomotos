@@ -6,7 +6,7 @@ class Base(models.Model):
     modificado = models.DateField('Data de atualização: ', auto_now_add=True)
     
     def __str__(self):
-        return self.criado
+        return str(self.criado)
 
 
 class Imagens(models.Model):
@@ -16,9 +16,7 @@ class Imagens(models.Model):
     imagem2 = models.ImageField(upload_to='main/', blank=True, null=True, max_length=200)
     imagem3 = models.ImageField(upload_to='main/', blank=True, null=True, max_length=200)
     imagem4 = models.ImageField(upload_to='main/', blank=True, null=True, max_length=200)
-    
-    def __str__(self):
-        return self.imagem_principal
+      
 
 class Moto(models.Model):
     modelo = models.CharField(max_length=100)

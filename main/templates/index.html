@@ -11,81 +11,137 @@
 <link rel="stylesheet" href="{% static 'css/style_index.css' %}">
 {% endblock %}
 
-{% block sobre %} #link-sobre {% endblock %}
-{% block contato %} #link-contato {% endblock %}
+{% block sobre %}#link-sobre{% endblock %}
+{% block contato %}#link-contato{% endblock %}
 
 
 {% block main %}
 <main>
-    <section class="principal container-fluid">
-        <section class="row d-flex justify-content-between">
-            <div class="col-xl-6 col-lg-12 tituloinicial">
-                <div>
-                    <h1>Delegado Motos</h1>
+    <section class="principal containerproje">
 
-                    <p class="compra">COMPRA, VENDE E TROCA</p>
-                    <p>“Impossível não comprar no Delegado Motos”</p>
-                    <a href="{% url 'motos' %}">
-                        <button type="button" class="btn bt-comprar">Comprar</button>
-                    </a>
-                </div>
-            </div>
+        <section class="slide-container active">
 
-            <div class="col-xl-5 col-lg-10 col-md-8 col-sm-8 carrosel-padding">
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-                            aria-label="Slide 4"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
-                            aria-label="Slide 5"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
-                            aria-label="Slide 6"></button>
+            <div class="slide container-fluid">
+
+                <div class="row d-flex justify-content-around contentproje tituloinicial">
+
+                    <div class="col-xl-6 col-lg-8 col-md-12 col-sm-12 col-8">
+                        <h1>Delegado Motos</h1>
+
+                        <p class="compra">COMPRA, VENDE E TROCA</p>
+                        <p>“Impossível não comprar no Delegado Motos”</p>
+                        <a href="{% url 'motos' %}">
+                            <button type="button" class="btn bt-comprar">Comprar</button>
+                        </a>
                     </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="{% static 'img/cliente1.jpeg' %}" class="d-block w-100" alt="Imagem dos clietes">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{% static 'img/cliente2.jpeg' %}" class="d-block w-100" alt="Imagem dos clietes">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{% static 'img/cliente3.jpeg' %}" class="d-block w-100" alt="Imagem dos clietes">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{% static 'img/cliente4.jpeg' %}" class="d-block w-100" alt="Imagem dos clietes">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{% static 'img/cliente5.jpeg' %}" class="d-block w-100" alt="Imagem dos clietes">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{% static 'img/cliente6.jpeg' %}" class="d-block w-100" alt="Imagem dos clietes">
-                        </div>
+
+
+                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-8 col-8">
+                        <img class="foto-principal img-fluid" src="{% static 'img/foto-principal.png' %}" alt="">
+
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+
                 </div>
-                <p class="legenda-carrosel d-flex justify-content-center">Alguns dos nossos clientes</p>
 
             </div>
         </section>
+        <div class="slide-container">
+            <div class="slide">
+                <div class="contentproje">
+                    <video muted controls src="{% static 'videos/WhatsApp Video 2022-10-28 at 22.18.01.mp4' %}" autoplay
+                        type="video/mp4"></video>
+                    <!-- <iframe width="100%" height="500px" src="https://www.youtube.com/embed/EzeiVUc4aWA"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe> -->
+                </div>
+            </div>
+        </div>
+
+        <?xml version="1.0" encoding="iso-8859-1"?>
+        <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+        <svg class="seta" id="prev" onclick="prev()" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 330 330"
+            style="enable-background:new 0 0 330 330;" xml:space="preserve">
+            <path id="XMLID_224_"
+                d="M325.606,229.393l-150.004-150C172.79,76.58,168.974,75,164.996,75c-3.979,0-7.794,1.581-10.607,4.394
+	l-149.996,150c-5.858,5.858-5.858,15.355,0,21.213c5.857,5.857,15.355,5.858,21.213,0l139.39-139.393l139.397,139.393
+	C307.322,253.536,311.161,255,315,255c3.839,0,7.678-1.464,10.607-4.394C331.464,244.748,331.464,235.251,325.606,229.393z" />
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+        </svg>
+        <?xml version="1.0" encoding="iso-8859-1"?>
+        <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+        <svg class="seta" id="next" onclick="next()" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 330 330"
+            style="enable-background:new 0 0 330 330;" xml:space="preserve">
+            <path id="XMLID_224_"
+                d="M325.606,229.393l-150.004-150C172.79,76.58,168.974,75,164.996,75c-3.979,0-7.794,1.581-10.607,4.394
+	l-149.996,150c-5.858,5.858-5.858,15.355,0,21.213c5.857,5.857,15.355,5.858,21.213,0l139.39-139.393l139.397,139.393
+	C307.322,253.536,311.161,255,315,255c3.839,0,7.678-1.464,10.607-4.394C331.464,244.748,331.464,235.251,325.606,229.393z" />
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+            <g>
+            </g>
+        </svg>
 
     </section>
     <section class="motos-principal">
-        <section class="addrecente">
+        <section class="addrecente" data-anime="up">
             <h3>Adicionados recentementes</h3>
             <div class="container">
                 <div class="row">
@@ -93,18 +149,22 @@
                     <div class="cartao col-xl-3 col-lg-4 col-md-4 col-sm-6 col-8">
                         <a class="" href="{% url 'detalhes' moto.id %}">
                             <div class="card-moto">
+
                                 <p class="marca">{{ moto.marca }}</p>
                                 <p class="modelo">{{ moto.modelo }} {{ moto.cilindradas }}c</p>
-
                                 <center>
-                                    <img class="img-fluid img-card" src="/media/{{ moto.imagens.imagem_sem_fundo }}"
-                                        alt="">
-                                </center>
+                                    <div class="img-card">
 
+                                        <img class="img-fluid" src="/media/{{ moto.imagens.imagem_sem_fundo }}" alt="">
+
+                                    </div>
+                                </center>
                                 <p class="valor">Por R$ {{ moto.preco|intcomma  }}</p>
                                 <p class="vista">à vista <span>(com de desconto)</span></p>
-                                <p class="prazo">ou 18x de R$ {{ moto.preco|mul:1.025|div:18|floatformat:2 }} com juros
+                                <p class="prazo">ou 18x de R$ {{ moto.preco|mul:1.025|div:18|floatformat:2 }} com
+                                    juros
                                 </p>
+
                             </div>
                         </a>
                     </div>
@@ -114,7 +174,7 @@
             </div>
         </section>
 
-        <section class="maispro">
+        <section class="maispro" data-anime="up">
             <h3>Motos mais baratas</h3>
             <div class="container">
                 <div class="row">
@@ -122,17 +182,22 @@
                     <div class="cartao col-xl-3 col-lg-4 col-md-4 col-sm-6 col-8">
                         <a class="" href="{% url 'detalhes' moto.id %}">
                             <div class="card-moto">
+
                                 <p class="marca">{{ moto.marca }}</p>
                                 <p class="modelo">{{ moto.modelo }} {{ moto.cilindradas }}c</p>
-
                                 <center>
-                                    <img class="img-fluid img-card" src="/media/{{ moto.imagens.imagem_sem_fundo }}"
-                                        alt="">
-                                </center>
+                                    <div class="img-card">
 
-                                <p class="valor">Por R$ {{ valor_total }}</p>
+                                        <img class="img-fluid" src="/media/{{ moto.imagens.imagem_sem_fundo }}" alt="">
+
+                                    </div>
+                                </center>
+                                <p class="valor">Por R$ {{ moto.preco|intcomma  }}</p>
                                 <p class="vista">à vista <span>(com de desconto)</span></p>
-                                <p class="prazo">ou 18x de R$ {{ valor_parcela }} com juros</p>
+                                <p class="prazo">ou 18x de R$ {{ moto.preco|mul:1.025|div:18|floatformat:2 }} com
+                                    juros
+                                </p>
+
                             </div>
                         </a>
                     </div>
@@ -142,7 +207,7 @@
             </div>
         </section>
     </section>
-    <section data-bs-spy="scroll" data-bs-root-margin="0px 0px -40%" id="link-sobre" class="sobre">
+    <section data-anime="up" data-bs-spy="scroll" data-bs-root-margin="0px 0px -40%" id="link-sobre" class="sobre">
         <div class="titulos">
             <h2>Sobre</h2>
         </div>
@@ -174,7 +239,7 @@
         </div>
         <div class="row d-flex justify-content-evenly">
 
-            <section class="fale-conosco col-xl-4 col-lg-5 col-md-7 col-sm-7 col-8">
+            <section data-anime="left" class="fale-conosco col-xl-4 col-lg-5 col-md-7 col-sm-7 col-8">
 
                 {% if messages %}
                 {% for message in messages %}
@@ -204,7 +269,7 @@
 
             </section>
 
-            <section class="col-xl-4 col-lg-5 col-md-7 col-sm-7 col-8 mapa">
+            <section data-anime="rigth" class="col-xl-4 col-lg-5 col-md-7 col-sm-7 col-8 mapa">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.7987482174137!2d-38.20688051185376!3d-6.104424666222025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfbf9fc929b57a90e!2zNsKwMDYnMTUuOSJTIDM4wrAxMicyMi44Ilc!5e0!3m2!1spt-BR!2sbr!4v1656964368214!5m2!1spt-BR!2sbr"
                     style="border:0;" allowfullscreen="" loading="lazy"
@@ -217,4 +282,7 @@
 
 
 </main>
+
 {% endblock %}
+{% block fotsobre %}#link-sobre{% endblock %}
+{% block fotcontato %}#link-contato{% endblock %}

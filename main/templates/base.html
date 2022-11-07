@@ -17,7 +17,7 @@
 
 <body>
 
-    <header id="header" class="header-scrolled">
+    <header id="header" class="">
         <nav class="navbar navbar-expand-lg nav-principal">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{% url 'index' %}">
@@ -33,17 +33,17 @@
                 <div class="container-fluid barra-navegacao">
                     <div id="navbarSupportedContent" class="collapse navbar-collapse row align-items-baseline ">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-xl-8 col-lg-7 justify-content-between">
-                            <li class="nav-item col-xl-3 col-lg-1">
+                            <li class="nav-item col-xl-3 col-lg-1 active">
                                 <a class="nav-link" aria-current="page" href="{% url 'index' %}">Início</a>
                             </li>
                             <li class="nav-item col-xl-3 col-lg-1">
                                 <a class="nav-link" href="{% url 'motos' %}">Motos</a>
                             </li>
                             <li class="nav-item col-xl-3 col-lg-1">
-                                <a class="nav-link " href="{% block sobre %} {% endblock %}">Sobre</a>
+                                <a class="nav-link " href="{% block sobre %}{% endblock %}">Sobre</a>
                             </li>
                             <li class="nav-item col-xl-3 col-lg-1">
-                                <a class="nav-link contatin" href="{% block contato %} {% endblock %}">Contato</a>
+                                <a class="nav-link contatin" href="{% block contato %}{% endblock %}">Contato</a>
                             </li>
                         </ul>
                         <form action="{% url 'motos' %}" method="GET" class="form-1 d-flex col-xl-4 col-lg-4">
@@ -145,12 +145,14 @@
                                     <span>Motos</span></a>
                             </li>
                             <li>
-                                <a href="#link-sobre"> <img src="{% static 'img/up-arrow-svgrepo-com 5.svg' %}"
+                                <a href="{% block fotsobre %}{% endblock %}"> <img
+                                        src="{% static 'img/up-arrow-svgrepo-com 5.svg' %}"
                                         alt="seta apontando para o link">
                                     <span>Sobre</span></a>
                             </li>
                             <li>
-                                <a href="#link-contato "> <img src="{% static 'img/up-arrow-svgrepo-com 5.svg' %}"
+                                <a href="{% block fotcontato %}{% endblock %}"> <img
+                                        src="{% static 'img/up-arrow-svgrepo-com 5.svg' %}"
                                         alt="seta apontando para o link">
                                     <span>Contato</span></a>
                             </li>
@@ -163,7 +165,7 @@
         <section class="footer2 container-fluid">
             <div class="row">
                 <div class="col-12 flex">
-                    <div>
+                    <div class="flex">
                         <img src="{% static 'img/logo-footer.png' %}" width="280px" alt="logo do site">
 
                         <p>“Impossível não comprar no Delegado Motos”</p>
@@ -175,6 +177,25 @@
             </div>
         </section>
     </footer>
+    <a href="#" class="back-to-top">
+        <?xml version="1.0" encoding="iso-8859-1"?>
+        <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 300.003 300.003" style="enable-background:new 0 0 300.003 300.003;"
+            xml:space="preserve">
+            <g>
+                <g>
+                    <path
+                        d="M150,0C67.159,0,0.001,67.159,0.001,150c0,82.838,67.157,150.003,149.997,150.003S300.002,232.838,300.002,150
+                    C300.002,67.159,232.842,0,150,0z M217.685,189.794c-5.47,5.467-14.338,5.47-19.81,0l-48.26-48.27l-48.522,48.516
+                    c-5.467,5.467-14.338,5.47-19.81,0c-2.731-2.739-4.098-6.321-4.098-9.905s1.367-7.166,4.103-9.897l56.292-56.297
+                    c0.539-0.838,1.157-1.637,1.888-2.368c2.796-2.796,6.476-4.142,10.146-4.077c3.662-0.062,7.348,1.281,10.141,4.08
+                    c0.734,0.729,1.349,1.528,1.886,2.365l56.043,56.043C223.152,175.454,223.156,184.322,217.685,189.794z" />
+                </g>
+            </g>
+
+        </svg></a>
+
 
     <!-- JavaScript Bundle with Popper -->
     <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
