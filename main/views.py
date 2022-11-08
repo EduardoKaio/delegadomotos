@@ -233,7 +233,7 @@ def motos(request):
 
 #PAGINAÇÃO
     parametro_page = request.GET.get('page', '1')
-    parametro_limit = request.GET.get('limit', '10')
+    parametro_limit = request.GET.get('limit', '12')
     
     if not(parametro_limit.isdigit() and int(parametro_limit) > 0):
         parametro_limit = '10'

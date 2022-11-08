@@ -3,7 +3,7 @@ from django.contrib import admin
 from main.models import *
 
 class MotoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'modelo', 'ano', 'preco')
+    list_display = ('id', 'modelo', 'ano', 'preco', 'base')
     search_fields = ('modelo',)
 
 admin.site.register(Moto, MotoAdmin)
