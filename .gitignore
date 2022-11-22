@@ -3,6 +3,10 @@
 *.pot
 *.pyc
 __pycache__
+<<<<<<< HEAD
+=======
+
+>>>>>>> e6f8be889e153fd3f26b75107510266f4b071e51
 
 # Backup files # 
 *.bak 
