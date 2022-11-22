@@ -53,7 +53,7 @@ def motos(request):
     #Inicio 
     motos = Moto.objects.all().order_by('-id')
     
-
+    
     cont = 0
     ate10, mais10 = False, False
     honda = False
