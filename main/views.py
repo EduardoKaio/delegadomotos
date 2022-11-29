@@ -230,7 +230,7 @@ def motos(request):
                         motos = Moto.objects.all().filter(cilindradas='300') & Moto.objects.all().filter(marca__icontains='honda')
                
 
-
+                
 #PAGINAÇÃO
     parametro_page = request.GET.get('page', '1')
     parametro_limit = request.GET.get('limit', '12')
