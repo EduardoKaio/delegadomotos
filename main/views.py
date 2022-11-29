@@ -10,6 +10,7 @@ from .forms import *
 from django.views.generic import ListView
 from django.core.paginator import Paginator, InvalidPage, EmptyPage, PageNotAnInteger
 from django.contrib.messages import constants
+from django.db.models import Q
 
 
 
@@ -122,113 +123,320 @@ def motos(request):
                 cont = vetor.count(True)
                 print(cont)
                 
+                ate10 = Q(preco__lte=10000)
+                mais10 = Q(preco__gte=10000)
+                honda = Q(marca__icontains='honda')
+                yamaha = Q(marca__icontains='yamaha')
+                c100 = Q(cilindradas='100')
+                c125 = Q(cilindradas='125') 
+                c150 = Q(cilindradas='150') 
+                c160 =  Q(cilindradas='160') 
+                c250 = Q(cilindradas='250')
+                c300 = Q(cilindradas='300')
                 
                 if cont == 1:
                     if request.POST.get("ate10", False):
-                        motos = Moto.objects.all().filter(preco__lte=10000)
+                        motos = Moto.objects.all().filter(ate10)
                     
                     if request.POST.get("mais10", False):
-                        motos = Moto.objects.all().filter(preco__gte=10000)
+                        motos = Moto.objects.all().filter(mais10)
 
                     if request.POST.get("honda", False):
-                        motos = Moto.objects.all().filter(marca__icontains='honda')
+                        motos = Moto.objects.all().filter(honda)
 
                     if request.POST.get("yamaha", False):
-                        motos = Moto.objects.all().filter(marca__icontains='yamaha')
+                        motos = Moto.objects.all().filter(yamaha)
                 
                     if request.POST.get("c100", False):
-                        motos = Moto.objects.all().filter(cilindradas='100')
+                        motos = Moto.objects.all().filter(c100)
                     
                     if request.POST.get("c125", False):
-                        motos = Moto.objects.all().filter(cilindradas='125')
+                        motos = Moto.objects.all().filter(c125)
 
                     if request.POST.get("c150", False):
-                        motos = Moto.objects.all().filter(cilindradas='150')
+                        motos = Moto.objects.all().filter(c150)
                 
                     if request.POST.get("c160", False):
-                        motos = Moto.objects.all().filter(cilindradas='160')
+                        motos = Moto.objects.all().filter(c160)
                 
                     if request.POST.get("c250", False):
-                        motos = Moto.objects.all().filter(cilindradas='250')
+                        motos = Moto.objects.all().filter(c250)
 
                     if request.POST.get("c300", False):
-                        motos = Moto.objects.all().filter(cilindradas='300')
-
-                    if request.POST.get("q0", False):
-                        motos = Moto.objects.all().filter(quilometragem=0)
-
-                    if request.POST.get("qate10", False):
-                        motos = Moto.objects.all().filter(quilometragem_lte=10000)
-
-                    if request.POST.get("qde10ate25", False):
-                        motos = Moto.objects.all().filter(quilometragem_gte=10000) & Moto.objects.all().filter(quilometragem_lte=25000) 
-
-                    if request.POST.get("qmais50", False):
-                        motos = Moto.objects.all().filter(quilometragem_gte=50000)
+                        motos = Moto.objects.all().filter(c300)
 
                 elif cont == 2:
                     print('Duas seleções')
                     
+                    # Dois preços 
+                    if request.POST.get("ate10", False) and request.POST.get("mais10", False):
+                        motos = Moto.objects.all().filter(ate10) | Moto.objects.all().filter(mais10)
+
+
                     # Duas marcas
                     if request.POST.get("honda", False) and request.POST.get("yamaha", False):
-                        motos = Moto.objects.all().filter(marca__icontains='honda') | Moto.objects.all().filter(marca__icontains='yamaha')
+                        motos = Moto.objects.all().filter(honda) | Moto.objects.all().filter(yamaha)
 
                     # Duas cilindradas
                     if request.POST.get("c100", False) and request.POST.get("c125", False):
-                        motos = Moto.objects.all().filter(cilindradas='100') | Moto.objects.all().filter(cilindradas='125')
+                        motos = Moto.objects.all().filter(c100) | Moto.objects.all().filter(c125)
 
                     if request.POST.get("c100", False) and request.POST.get("c150", False):
-                        motos = Moto.objects.all().filter(cilindradas='100') | Moto.objects.all().filter(cilindradas='150')
+                        motos = Moto.objects.all().filter(c100) | Moto.objects.all().filter(c150)
 
                     if request.POST.get("c100", False) and request.POST.get("c160", False):
-                        motos = Moto.objects.all().filter(cilindradas='100') | Moto.objects.all().filter(cilindradas='160')
+                        motos = Moto.objects.all().filter(c100) | Moto.objects.all().filter(c160)
 
                     if request.POST.get("c100", False) and request.POST.get("c250", False):
-                        motos = Moto.objects.all().filter(cilindradas='100') | Moto.objects.all().filter(cilindradas='160')
+                        motos = Moto.objects.all().filter(c100) | Moto.objects.all().filter(c250)
 
                     if request.POST.get("c100", False) and request.POST.get("c300", False):
-                        motos = Moto.objects.all().filter(cilindradas='100') | Moto.objects.all().filter(cilindradas='160')
+                        motos = Moto.objects.all().filter(c100) | Moto.objects.all().filter(c300)
 
 
 
+                    # Um preco e uma marca
+                    if request.POST.get("ate10", False) and request.POST.get("honda", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(honda)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("yamaha", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(yamaha)
+
+                    if request.POST.get("mais10", False) and request.POST.get("honda", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(honda)
+                    
+                    if request.POST.get("mais10", False) and request.POST.get("yamaha", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(yamaha)
+
+                    # Um preco e uma cilindrada
+                    if request.POST.get("ate10", False) and request.POST.get("c100", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(c100)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("c125", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(c125)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("c150", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(c150)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("c160", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(c160)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("c250", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(c250)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("c300", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(c300)
+                    
+                    if request.POST.get("mais10", False) and request.POST.get("c100", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(c100)
+                    
+                    if request.POST.get("mais10", False) and request.POST.get("c125", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(c125)
+                    
+                    if request.POST.get("mais10", False) and request.POST.get("c150", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(c150)
+                    
+                    if request.POST.get("mais10", False) and request.POST.get("c160", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(c160)
+                    
+                    if request.POST.get("mais10", False) and request.POST.get("c250", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(c250)
+                    
+                    if request.POST.get("mais10", False) and request.POST.get("c300", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(c300)
 
                     # Uma marca e uma cilindrada
                     if request.POST.get("c100", False) and request.POST.get("yamaha", False):
-                        motos = Moto.objects.all().filter(cilindradas='100') & Moto.objects.all().filter(marca__icontains='yamaha')
+                        motos = Moto.objects.all().filter(c100) & Moto.objects.all().filter(yamaha)
                     
                     if request.POST.get("c125", False) and request.POST.get("yamaha", False):
-                        motos = Moto.objects.all().filter(cilindradas='125') & Moto.objects.all().filter(marca__icontains='yamaha')
+                        motos = Moto.objects.all().filter(c125) & Moto.objects.all().filter(yamaha)
                     
                     if request.POST.get("c150", False) and request.POST.get("yamaha", False):
-                        motos = Moto.objects.all().filter(cilindradas='150') & Moto.objects.all().filter(marca__icontains='yamaha')
+                        motos = Moto.objects.all().filter(c150) & Moto.objects.all().filter(yamaha)
                     
                     if request.POST.get("c160", False) and request.POST.get("yamaha", False):
-                        motos = Moto.objects.all().filter(cilindradas='160') & Moto.objects.all().filter(marca__icontains='yamaha')
+                        motos = Moto.objects.all().filter(c160) & Moto.objects.all().filter(yamaha)
                     
                     if request.POST.get("c250", False) and request.POST.get("yamaha", False):
-                        motos = Moto.objects.all().filter(cilindradas='250') & Moto.objects.all().filter(marca__icontains='yamaha')
+                        motos = Moto.objects.all().filter(c250) & Moto.objects.all().filter(yamaha)
 
                     if request.POST.get("c300", False) and request.POST.get("yamaha", False):
-                        motos = Moto.objects.all().filter(cilindradas='300') & Moto.objects.all().filter(marca__icontains='yamaha')
+                        motos = Moto.objects.all().filter(c300) & Moto.objects.all().filter(yamaha)
 
                     if request.POST.get("c100", False) and request.POST.get("honda", False):
-                        motos = Moto.objects.all().filter(cilindradas='100') & Moto.objects.all().filter(marca__icontains='honda')
+                        motos = Moto.objects.all().filter(c100) & Moto.objects.all().filter(honda)
                     
                     if request.POST.get("c125", False) and request.POST.get("honda", False):
-                        motos = Moto.objects.all().filter(cilindradas='125') & Moto.objects.all().filter(marca__icontains='honda')
+                        motos = Moto.objects.all().filter(c125) & Moto.objects.all().filter(honda)
                     
                     if request.POST.get("c150", False) and request.POST.get("honda", False):
-                        motos = Moto.objects.all().filter(cilindradas='150') & Moto.objects.all().filter(marca__icontains='honda')
+                        motos = Moto.objects.all().filter(c150) & Moto.objects.all().filter(honda)
                     
                     if request.POST.get("c160", False) and request.POST.get("honda", False):
-                        motos = Moto.objects.all().filter(cilindradas='160') & Moto.objects.all().filter(marca__icontains='honda')
+                        motos = Moto.objects.all().filter(c160) & Moto.objects.all().filter(honda)
                     
                     if request.POST.get("c250", False) and request.POST.get("honda", False):
-                        motos = Moto.objects.all().filter(cilindradas='250') & Moto.objects.all().filter(marca__icontains='honda')
+                        motos = Moto.objects.all().filter(c250) & Moto.objects.all().filter(honda)
 
                     if request.POST.get("c300", False) and request.POST.get("honda", False):
-                        motos = Moto.objects.all().filter(cilindradas='300') & Moto.objects.all().filter(marca__icontains='honda')
+                        motos = Moto.objects.all().filter(c300) & Moto.objects.all().filter(honda)
                
+                elif cont == 3:
+                    #Três cilidradas 
+                    if request.POST.get("c100", False) and request.POST.get("c125", False) and request.POST.get("c150", False):
+                        motos = Moto.objects.all().filter(c100) | Moto.objects.all().filter(c125) | Moto.objects.all().filter(c150)
+                    
+                    if request.POST.get("c100", False) and request.POST.get("c125", False) and request.POST.get("c160", False):
+                        motos = Moto.objects.all().filter(c100) | Moto.objects.all().filter(c125) | Moto.objects.all().filter(c160)
+
+                    if request.POST.get("c100", False) and request.POST.get("c125", False) and request.POST.get("c250", False):
+                        motos = Moto.objects.all().filter(c100) | Moto.objects.all().filter(c125) | Moto.objects.all().filter(c250)
+                    
+                    if request.POST.get("c100", False) and request.POST.get("c125", False) and request.POST.get("c300", False):
+                        motos = Moto.objects.all().filter(c100) | Moto.objects.all().filter(c125) | Moto.objects.all().filter(c300)
+                    
+                    if request.POST.get("c100", False) and request.POST.get("c150", False) and request.POST.get("c160", False):
+                        motos = Moto.objects.all().filter(c100) | Moto.objects.all().filter(c125) | Moto.objects.all().filter(c150)
+
+                    if request.POST.get("c100", False) and request.POST.get("c160", False) and request.POST.get("c250", False):
+                        motos = Moto.objects.all().filter(c100) | Moto.objects.all().filter(c125) | Moto.objects.all().filter(c150)
+                    
+                    if request.POST.get("c100", False) and request.POST.get("c250", False) and request.POST.get("c300", False):
+                        motos = Moto.objects.all().filter(c100) | Moto.objects.all().filter(c125) | Moto.objects.all().filter(c150)
+
+                    if request.POST.get("c125", False) and request.POST.get("c150", False) and request.POST.get("c160", False):
+                        motos = Moto.objects.all().filter(c125) | Moto.objects.all().filter(c150) | Moto.objects.all().filter(c160)
+
+                    if request.POST.get("c150", False) and request.POST.get("c160", False) and request.POST.get("c250", False):
+                        motos = Moto.objects.all().filter(c150) | Moto.objects.all().filter(c160) | Moto.objects.all().filter(c250)
+                    
+                    if request.POST.get("c160", False) and request.POST.get("c250", False) and request.POST.get("c300", False):
+                        motos = Moto.objects.all().filter(c160) | Moto.objects.all().filter(c250) | Moto.objects.all().filter(c300)
+
+
+                    # Dois precos e uma marca
+                    if request.POST.get("ate10", False) and request.POST.get("mais10", False) and request.POST.get("honda", False):
+                        motos = (Moto.objects.all().filter(ate10) | Moto.objects.all().filter(mais10)) & Moto.objects.all().filter(honda)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("mais10", False) and request.POST.get("yamaha", False):
+                        motos = (Moto.objects.all().filter(ate10) | Moto.objects.all().filter(mais10)) & Moto.objects.all().filter(yamaha)
+
+                    #Dois precos e uma cilindrada
+                    if request.POST.get("ate10", False) and request.POST.get("mais10", False) and request.POST.get("c100", False):
+                        motos = (Moto.objects.all().filter(ate10) | Moto.objects.all().filter(mais10)) & Moto.objects.all().filter(c100)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("mais10", False) and request.POST.get("c125", False):
+                        motos = (Moto.objects.all().filter(ate10) | Moto.objects.all().filter(mais10)) & Moto.objects.all().filter(c125)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("mais10", False) and request.POST.get("c150", False):
+                        motos = (Moto.objects.all().filter(ate10) | Moto.objects.all().filter(mais10)) & Moto.objects.all().filter(c150)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("mais10", False) and request.POST.get("c160", False):
+                        motos = (Moto.objects.all().filter(ate10) | Moto.objects.all().filter(mais10)) & Moto.objects.all().filter(c160)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("mais10", False) and request.POST.get("c250", False):
+                        motos = (Moto.objects.all().filter(ate10) | Moto.objects.all().filter(mais10)) & Moto.objects.all().filter(c250)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("mais10", False) and request.POST.get("c300", False):
+                        motos = (Moto.objects.all().filter(ate10) | Moto.objects.all().filter(mais10)) & Moto.objects.all().filter(c300)
+
+
+                    #Duas marcas e um preco 
+                    if request.POST.get("honda", False) and request.POST.get("yamaha", False) and request.POST.get("ate10", False):
+                        motos = (Moto.objects.all().filter(honda) | Moto.objects.all().filter(yamaha)) & Moto.objects.all().filter(ate10)
+                    
+                    if request.POST.get("honda", False) and request.POST.get("yamaha", False) and request.POST.get("mais10", False):
+                        motos = (Moto.objects.all().filter(honda) | Moto.objects.all().filter(yamaha)) & Moto.objects.all().filter(mais10)
+
+                    #duas marcas e uma cilindrada
+                    if request.POST.get("honda", False) and request.POST.get("yamaha", False) and request.POST.get("c100", False):
+                        motos = (Moto.objects.all().filter(honda) | Moto.objects.all().filter(yamaha)) & Moto.objects.all().filter(c100)
+                    
+                    if request.POST.get("honda", False) and request.POST.get("yamaha", False) and request.POST.get("c125", False):
+                        motos = (Moto.objects.all().filter(honda) | Moto.objects.all().filter(yamaha)) & Moto.objects.all().filter(c125)
+                    
+                    if request.POST.get("honda", False) and request.POST.get("yamaha", False) and request.POST.get("c150", False):
+                        motos = (Moto.objects.all().filter(honda) | Moto.objects.all().filter(yamaha)) & Moto.objects.all().filter(c150)
+                    
+                    if request.POST.get("honda", False) and request.POST.get("yamaha", False) and request.POST.get("c160", False):
+                        motos = (Moto.objects.all().filter(honda) | Moto.objects.all().filter(yamaha)) & Moto.objects.all().filter(c160)
+                    
+                    if request.POST.get("honda", False) and request.POST.get("yamaha", False) and request.POST.get("c250", False):
+                        motos = (Moto.objects.all().filter(honda) | Moto.objects.all().filter(yamaha)) & Moto.objects.all().filter(c250)
+                    
+                    if request.POST.get("honda", False) and request.POST.get("yamaha", False) and request.POST.get("c300", False):
+                        motos = (Moto.objects.all().filter(honda) | Moto.objects.all().filter(yamaha)) & Moto.objects.all().filter(c300)
+
+
+                    #Três diferentes 
+                    if request.POST.get("ate10", False) and request.POST.get("honda", False) and request.POST.get("c100", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(honda) & Moto.objects.all().filter(c100)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("honda", False) and request.POST.get("c125", False):
+                        motos = (Moto.objects.all().filter(ate10) & Moto.objects.all().filter(honda)) & Moto.objects.all().filter(c125)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("honda", False) and request.POST.get("c150", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(honda) & Moto.objects.all().filter(c150)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("honda", False) and request.POST.get("c160", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(honda) & Moto.objects.all().filter(c160)
+
+                    if request.POST.get("ate10", False) and request.POST.get("honda", False) and request.POST.get("c250", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(honda) & Moto.objects.all().filter(c250)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("honda", False) and request.POST.get("c300", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(honda) & Moto.objects.all().filter(c300)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("yamaha", False) and request.POST.get("c125", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(yamaha) & Moto.objects.all().filter(c125)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("yamaha", False) and request.POST.get("c150", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(yamaha) & Moto.objects.all().filter(c150)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("yamaha", False) and request.POST.get("c160", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(yamaha) & Moto.objects.all().filter(c160)
+
+                    if request.POST.get("ate10", False) and request.POST.get("yamaha", False) and request.POST.get("c250", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(yamaha) & Moto.objects.all().filter(c250)
+                    
+                    if request.POST.get("ate10", False) and request.POST.get("yamaha", False) and request.POST.get("c300", False):
+                        motos = Moto.objects.all().filter(ate10) & Moto.objects.all().filter(yamaha) & Moto.objects.all().filter(c300)
+                    
+
+                    if request.POST.get("mais10", False) and request.POST.get("honda", False) and request.POST.get("c100", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(honda) & Moto.objects.all().filter(c100)
+                    
+                    if request.POST.get("mais10", False) and request.POST.get("honda", False) and request.POST.get("c125", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(honda) & Moto.objects.all().filter(c125)
+                    
+                    if request.POST.get("mais10", False) and request.POST.get("honda", False) and request.POST.get("c150", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(honda) & Moto.objects.all().filter(c150)
+                    
+                    if request.POST.get("mais10", False) and request.POST.get("honda", False) and request.POST.get("c160", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(honda) & Moto.objects.all().filter(c160)
+
+                    if request.POST.get("mais10", False) and request.POST.get("honda", False) and request.POST.get("c250", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(honda) & Moto.objects.all().filter(c250)
+                    
+                    if request.POST.get("mais10", False) and request.POST.get("honda", False) and request.POST.get("c300", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(honda) & Moto.objects.all().filter(c300)
+                    
+                    if request.POST.get("mais10", False) and request.POST.get("yamaha", False) and request.POST.get("c125", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(yamaha) & Moto.objects.all().filter(c125)
+                    
+                    if request.POST.get("mais10", False) and request.POST.get("yamaha", False) and request.POST.get("c150", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(yamaha) & Moto.objects.all().filter(c150)
+                    
+                    if request.POST.get("mais10", False) and request.POST.get("yamaha", False) and request.POST.get("c160", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(yamaha) & Moto.objects.all().filter(c160)
+
+                    if request.POST.get("mais10", False) and request.POST.get("yamaha", False) and request.POST.get("c250", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(yamaha) & Moto.objects.all().filter(c250)
+                    
+                    if request.POST.get("mais10", False) and request.POST.get("yamaha", False) and request.POST.get("c300", False):
+                        motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(yamaha) & Moto.objects.all().filter(c300)
+
 
 
 #PAGINAÇÃO
