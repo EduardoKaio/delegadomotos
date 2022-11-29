@@ -260,15 +260,13 @@ h1 {
     text-align: justify;
     width: 80%;
     margin: auto;
+    font-size: 18px;
+    font-weight: 400;
 }
 
 .sobre .row {
     display: flex;
     align-items: center;
-}
-
-#segundo {
-    margin-top: 30px;
 }
 
 

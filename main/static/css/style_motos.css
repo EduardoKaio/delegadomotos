@@ -50,10 +50,7 @@
     padding: 40px 0;
 }
 
-.empty{
-    font-weight: 400;
 
-}
 
 /* .col-xl-10 {
     padding: 0;
@@ -114,6 +111,7 @@ hr{
     flex-direction: column;
     justify-content: space-around; 
 }
+
 
 .card-moto:hover {
     transform: scale(1);
@@ -189,4 +187,28 @@ main {
 [data-anime].animate{
     opacity: 1;
     transform: translate3d(0px, 0px, 0px);
+}
+
+.notfound{
+    display: flex;
+    justify-content: center;
+
+}
+.notfound div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+.notfound svg {
+    width: 100px;
+}
+.notfound svg path{
+    fill: #FFBA0A;
+}
+.empty{
+    margin-top: 10px;
+    font-weight: 500;
+    width: 60%;
+    text-align: center;
 }

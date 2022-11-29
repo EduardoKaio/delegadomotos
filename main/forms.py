@@ -37,7 +37,7 @@ class CheckboxForm(forms.Form):
 
 
 class ContatoForm(forms.Form):
-    nome = forms.CharField(max_length=100, required=True, error_messages={'required': 'joga e joga'}, label='Nome', widget=forms.TextInput(attrs={'class' : ' input-nome'}))
+    nome = forms.CharField(max_length=100, required=True, label='Nome', widget=forms.TextInput(attrs={'class' : ' input-nome'}))
     email = forms.EmailField(max_length=100, label='E-mail', widget=forms.TextInput(attrs={'class' : ' input-email', 'pattern' : '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'}))
     assunto = forms.CharField( max_length=100, label='Assunto', widget=forms.TextInput(attrs={ 'class' : ''}))
     mensagem = forms.CharField(widget=forms.Textarea(attrs={'class' : ''}), label='Mensagem')
