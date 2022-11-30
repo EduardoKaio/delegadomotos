@@ -438,7 +438,7 @@ def motos(request):
                         motos = Moto.objects.all().filter(mais10) & Moto.objects.all().filter(yamaha) & Moto.objects.all().filter(c300)
 
 
-
+                
 #PAGINAÇÃO
     parametro_page = request.GET.get('page', '1')
     parametro_limit = request.GET.get('limit', '12')
