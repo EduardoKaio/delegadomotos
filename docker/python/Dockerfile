@@ -1,0 +1,21 @@
+FROM python:3.10.5-alpine
+
+RUN apk update \
+    && apk add bash \
+    && apk add gcc \
+    && apk add musl-dev \
+    && apk add linux-headers \
+    && apk add jpeg-dev \
+    && apk add zlib-dev \
+    && apk add mariadb-dev \
+    && apk add libffi-dev
+
+# install pypi packages
+COPY requirements.txt /requirements.txt
+RUN pip install --upgrade pip \
+    && pip install -r requirements.txt \
+    && rm /usr/bin/mysql*
+
+# COPY entrypoint.sh /entrypoint.sh
+# RUN chmod +x /entrypoint.sh
+# ENTRYPOINT ["/entrypoint.sh"]

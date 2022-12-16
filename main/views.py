@@ -13,7 +13,6 @@ from django.contrib.messages import constants
 from django.db.models import Q
 
 
-
 def index(request):
     
     menor_preco = Moto.objects.all().order_by('preco')[:4]
@@ -30,16 +29,12 @@ def index(request):
             form = ContatoForm()
         else:
             print("Erro ao enviar email")
-            
-    
 
     context = {
         'form': form,
         'menor_preco' : menor_preco,
         'add_recente' : add_recente,       
         }
-
-
 
     search = request.GET.get('search')
 
