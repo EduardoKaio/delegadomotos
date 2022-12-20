@@ -6,7 +6,7 @@ services:
     ports:
       - 8000:80
     volumes:
-      - static_volume:/home/delegadomotos/web/staticfiles
+      - static_volume:/home/app/staticfiles
     working_dir: /etc/nginx
     links:
       - python
@@ -14,11 +14,11 @@ services:
       - python
   python:
     container_name: python
-    build: ./docker/python
+    build: ./
     command: gunicorn delegadomotos.wsgi:application --bind 0.0.0.0:8000
     # command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - static_volume:/home/delegadomotos/web/staticfiles
+      - static_volume:/home/app/staticfiles
     depends_on:
       mysql:
         condition: service_healthy
