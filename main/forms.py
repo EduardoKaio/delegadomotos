@@ -7,6 +7,7 @@ from tkinter import Widget
 from unicodedata import name
 from django import forms
 from django.core.mail.message import EmailMessage
+from .models import *
 
 SELECT_CHOICES = (
     ('1', 'Adicionados recentemente'),
@@ -79,3 +80,15 @@ class CompraForm(forms.Form):
             headers={'Reply-to': email}
         )
         mail.send()
+
+
+class MotoForm(forms.ModelForm):
+    
+    class Meta:
+        model=Moto
+
+        fields = ['is_visibility']
+
+
+
+

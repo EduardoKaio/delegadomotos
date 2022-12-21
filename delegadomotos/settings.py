@@ -22,11 +22,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(os.environ.get("DEBUG", default=0))
 
+# -------------- HOSPEDAGEM ---------------------
+SECRET_KEY = '2003kaio'
+
+
+#DEBUG = int(os.environ.get("DEBUG", default=0))
+DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
@@ -90,14 +93,21 @@ WSGI_APPLICATION = 'delegadomotos.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# -------------- HOSPEDAGEM ---------------------
+
 DATABASES = {
     'default': {
-        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.mysql"),
-        "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.mysql"),
-        "USER": os.environ.get("SQL_USER", "user"),
-        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
-        "HOST": os.environ.get("SQL_HOST", "localhost"),
-        "PORT": os.environ.get("SQL_PORT", "5432"),
+    #     "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.mysql"),
+    #     "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.mysql"),
+    #     "USER": os.environ.get("SQL_USER", "user"),
+    #     "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+    #     "HOST": os.environ.get("SQL_HOST", "localhost"),
+    #     "PORT": os.environ.get("SQL_PORT", "5432"),
+    # }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'delegadomotos',
+        'USER': 'root',
+        'PASSWORD': '2003kaio',
     }
 }
 
@@ -155,3 +165,4 @@ EMAIL_PORT = 587
 EMAIL_HOST_TSL = True 
 EMAIL_HOST_PASSWORD = 'sua-senha' 
 """
+LOGIN_REDIRECT_URL='ativacao'

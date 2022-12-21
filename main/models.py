@@ -30,6 +30,7 @@ class Moto(models.Model):
     partida = models.CharField(max_length=100)
     emplacamento = models.CharField(max_length=100)
     descricao = models.TextField()
+    is_visibility = models.BooleanField(default=True)
     imagens = models.ForeignKey(Imagens, on_delete=models.CASCADE)
     base = models.ForeignKey(Base, on_delete=models.CASCADE)
     

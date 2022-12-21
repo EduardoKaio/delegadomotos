@@ -11,6 +11,9 @@ from django.views.generic import ListView
 from django.core.paginator import Paginator, InvalidPage, EmptyPage, PageNotAnInteger
 from django.contrib.messages import constants
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+from django.shortcuts import redirect
 
 
 def index(request):
@@ -43,6 +46,30 @@ def index(request):
         return render(request, 'motos.html', moto_list)
     return render(request, 'index.html', context)
 
+
+@login_required
+def ativacao(request):
+    motos = Moto.objects.all()
+
+    if str(request.method) == 'POST':
+        form = ContatoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            print("Modificação feita com sucesso")
+
+        else:
+            print("Modificação falhou")
+            form = MotoForm()
+    else:
+        form = ContatoForm() 
+
+
+    context = {'motos' : motos, 'form' : form}
+    return render(request, 'ativacao.html', context)
+
+def logout_aplicacao(request):
+    logout(request)
+    return redirect('login')
 
 def motos(request):
     

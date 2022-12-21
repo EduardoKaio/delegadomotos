@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title%} Ativação {% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/style_ativacao.css' %}">
+{% endblock %}
+
+{% block main %}
+<main>
+    <h1>ATIVAÇÃO</h1>
+    <a href="{% url 'logout' %}"><button type="button" class="btn btn-danger">Sair</button></a>
+
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Ano</th>
+                    <th scope="col">Preco</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Visibilidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for moto in motos %}
+
+                <tr>
+                    <th scope="row">{{ moto.id }}</th>
+                    <td>{{ moto.modelo }}</td>
+                    <td>{{ moto.ano }}</td>
+                    <td>{{ moto.preco }}</td>
+                    <td>{{ moto.base }}</td>
+                    <td>{{ form.is_visibility }}</td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-success">Salvar alterações</button>
+    </form>
+</main>
+{% endblock %}
