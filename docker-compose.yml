@@ -30,6 +30,7 @@ services:
     volumes:
       - data-volume:/var/lib/mysql
     environment:
+      - MYSQL_USER=root
       - MYSQL_ROOT_PASSWORD=2003kaio
       - MYSQL_DATABASE=delegadomotos
     healthcheck:

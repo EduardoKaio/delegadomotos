@@ -105,7 +105,7 @@ DATABASES = {
          "PORT": os.environ.get("SQL_PORT", "5432"),
      }
 #        'ENGINE': 'django.db.backends.mysql',
-#       'NAME': 'delegadomotos',
+#        'NAME': 'delegadomotos',
 #        'USER': 'root',
 #        'PASSWORD': '2003kaio',
 #    }
