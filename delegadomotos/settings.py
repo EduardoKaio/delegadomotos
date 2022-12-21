@@ -25,11 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # -------------- HOSPEDAGEM ---------------------
-SECRET_KEY = '2003kaio'
+#SECRET_KEY = '2003kaio'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
-
-#DEBUG = int(os.environ.get("DEBUG", default=0))
-DEBUG = True
+DEBUG = int(os.environ.get("DEBUG", default=0))
+#DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
@@ -97,18 +97,18 @@ WSGI_APPLICATION = 'delegadomotos.wsgi.application'
 
 DATABASES = {
     'default': {
-    #     "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.mysql"),
-    #     "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.mysql"),
-    #     "USER": os.environ.get("SQL_USER", "user"),
-    #     "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
-    #     "HOST": os.environ.get("SQL_HOST", "localhost"),
-    #     "PORT": os.environ.get("SQL_PORT", "5432"),
-    # }
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'delegadomotos',
-        'USER': 'root',
-        'PASSWORD': '2003kaio',
-    }
+         "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.mysql"),
+         "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.mysql"),
+         "USER": os.environ.get("SQL_USER", "user"),
+         "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+         "HOST": os.environ.get("SQL_HOST", "localhost"),
+         "PORT": os.environ.get("SQL_PORT", "5432"),
+     }
+#        'ENGINE': 'django.db.backends.mysql',
+#       'NAME': 'delegadomotos',
+#        'USER': 'root',
+#        'PASSWORD': '2003kaio',
+#    }
 }
 
 
