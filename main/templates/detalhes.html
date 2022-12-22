@@ -238,7 +238,7 @@
                         <h5 class="h5-cont">Deixe suas informações abaixo para entrarmos em contato com você!</h5>
 
                         <form id="modal-form" action="{% url 'detalhes' moto.id %}" method="post" class="form-modal"
-                            autocomplete="off">
+                            autocomplete="on">
                             {% csrf_token %}
                             {{ form }}
                             <button class="bt-enviar" type="submit">Enviar informações!</button>

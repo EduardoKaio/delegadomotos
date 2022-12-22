@@ -27,6 +27,8 @@ urlpatterns = [
     path('motos/', motos, name='motos'),
     path('detalhes/<int:id>', detalhes, name='detalhes'),
     path('ativacao/', ativacao, name='ativacao'),
+    # path('ativacao/editar/<int:id>', editar_moto, name='editar_moto'),
+    # path('ativacao/update/<int:id>', update, name='update'),
     path('accounts/login/',LoginView.as_view(template_name='login.html'),name='login'),
     path('logout/', logout_aplicacao, name='logout'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

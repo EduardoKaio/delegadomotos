@@ -33,11 +33,11 @@
 
                 <tr>
                     <th scope="row">{{ moto.id }}</th>
-                    <td>{{ moto.modelo }}</td>
+                    <td> {{ moto.modelo }} </td>
                     <td>{{ moto.ano }}</td>
-                    <td>{{ moto.preco }}</td>
-                    <td>{{ moto.base }}</td>
-                    <td>{{ form.is_visibility }}</td>
+                    <td>{{ moto.preco }} </td>
+                    <td>{{ moto.base }} </td>
+                    <td>{{ moto.is_visibility }} {{ form.is_visibility }}</td>
                 </tr>
 
                 {% endfor %}
@@ -46,4 +46,8 @@
         <button type="submit" class="btn btn-success">Salvar alterações</button>
     </form>
 </main>
+
+{% endblock %}
+{% block script %}
+<script src="{% static 'js/utils_login.js' %}"></script>
 {% endblock %}

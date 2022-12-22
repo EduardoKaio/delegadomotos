@@ -1,19 +1,16 @@
-from msilib.schema import ListView
-from multiprocessing import context
-from re import M, search, template
-from unicodedata import decimal
-from urllib import request
 from django.shortcuts import render
 from django.contrib import messages
 from main.models import *
 from .forms import *
-from django.views.generic import ListView
 from django.core.paginator import Paginator, InvalidPage, EmptyPage, PageNotAnInteger
 from django.contrib.messages import constants
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.shortcuts import redirect
+from django.core.mail import send_mail
+from django.conf import settings
+
 
 
 def index(request):
@@ -23,10 +20,23 @@ def index(request):
 
     form = ContatoForm(request.POST or None)
 
-    
     if str(request.method) == 'POST':
+        
         if form.is_valid():
-            form.send_mail()
+            nome = request.POST.get('nome')
+            email = request.POST.get('email')
+            assunto = request.POST.get('assunto')
+            mensagem = request.POST.get('mensagem')
+            
+            conteudo = f'Nome:  {nome}\nE-mail: {email}\nAssunto: {assunto}\nMensagem: {mensagem}'
+
+            print(nome, email, assunto, mensagem)
+
+            send_mail(
+                assunto, conteudo, settings.EMAIL_HOST_USER,
+                [settings.EMAIL_HOST_USER]
+            )
+
             print("Enviado com sucesso")
             messages.add_message(request, constants.SUCCESS, 'Mensagem enviada com sucesso')
             form = ContatoForm()
@@ -51,8 +61,8 @@ def index(request):
 def ativacao(request):
     motos = Moto.objects.all()
 
+    form = MotoForm(request.POST or None)
     if str(request.method) == 'POST':
-        form = ContatoForm(request.POST)
         if form.is_valid():
             form.save()
             print("Modificação feita com sucesso")
@@ -61,15 +71,28 @@ def ativacao(request):
             print("Modificação falhou")
             form = MotoForm()
     else:
-        form = ContatoForm() 
+        form = MotoForm() 
 
 
     context = {'motos' : motos, 'form' : form}
     return render(request, 'ativacao.html', context)
 
+# def editar_moto(request, id):
+#     moto = Moto.objects.get(id=id)
+
+#     return render(request, 'editar_moto.html', {'moto' : moto})
+
+# def update(request, id):
+#     is_visibility = request.POST.get('is_visibility')
+#     moto = Moto.objects.get(id=id)
+#     moto.is_visibility = is_visibility
+#     moto.save()
+#     return redirect('ativacao')
+
 def logout_aplicacao(request):
     logout(request)
     return redirect('login')
+
 
 def motos(request):
     
@@ -510,23 +533,32 @@ def detalhes(request, id):
 
     form = CompraForm(request.POST or None)
     
-
-    
     search = request.GET.get('search') 
     if search:
         moto_list = Moto.objects.filter(modelo__icontains=search)
         return render(request, 'motos.html', moto_list)
     
     if str(request.method) == 'POST':
+        
         if form.is_valid():
-            viewModal = True
-            form.send_mail()
-            print("Enviado com sucesso")
-            messages.success(request, 'Profile details updated.')
-            form = CompraForm()
+            nome_completo = request.POST.get('nome_completo')
+            email = request.POST.get('email')
+            celular = request.POST.get('celular')
+            
+            conteudo = f'Nome:  {nome_completo}\nE-mail: {email}\nCelular: {celular}'
 
+            print(nome_completo, email, celular)
+            moto_interessada = f'{moto.modelo} {moto.cilindradas} {moto.ano}'
+            send_mail(
+                'INTERESSADO NA MOTO ' + moto_interessada, conteudo, settings.EMAIL_HOST_USER,
+                [settings.EMAIL_HOST_USER]
+            )
+            print("Enviado com sucesso")
+            viewModal = True
+            form = CompraForm()
         else:
             print("Erro ao enviar email")
+
 
     context = {
         'moto' : moto,

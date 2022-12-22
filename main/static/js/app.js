@@ -42,7 +42,6 @@ function scrollParaID(event){
 }
 
 
-
 let slides = document.querySelectorAll('.slide-container');
 let index = 0;
 
@@ -115,7 +114,6 @@ function img4() {
     var source = document.getElementById("img4").src;
     document.getElementById("trocarImg").src=source;
 }
-
 
 function mascara(telefone){ 
     if(telefone.value.length == 0)

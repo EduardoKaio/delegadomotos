@@ -25,11 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # -------------- HOSPEDAGEM ---------------------
-#SECRET_KEY = '2003kaio'
+# SECRET_KEY = '2003kaio'
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = int(os.environ.get("DEBUG", default=0))
-#DEBUG = True
+# DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
@@ -97,18 +97,18 @@ WSGI_APPLICATION = 'delegadomotos.wsgi.application'
 
 DATABASES = {
     'default': {
-         "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.mysql"),
-         "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.mysql"),
-         "USER": os.environ.get("SQL_USER", "user"),
-         "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
-         "HOST": os.environ.get("SQL_HOST", "localhost"),
-         "PORT": os.environ.get("SQL_PORT", "5432"),
-     }
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'delegadomotos',
-#        'USER': 'root',
-#        'PASSWORD': '2003kaio',
-#    }
+        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.mysql"),
+        "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.mysql"),
+        "USER": os.environ.get("SQL_USER", "user"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+        "HOST": os.environ.get("SQL_HOST", "localhost"),
+        "PORT": os.environ.get("SQL_PORT", "5432"),
+  }
+          # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'delegadomotos',
+        # 'USER': 'root',
+        # 'PASSWORD': '2003kaio',
+    # }
 }
 
 
@@ -156,13 +156,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-"""
-EMAIL_HOST = 'localhost'
-EMAIL_HOST_USER = 'no-reply@seudominio.com.br'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'delegadomotos@gmail.com'
+EMAIL_HOST_PASSWORD = 'rhuofhjwohzphuvu' 
 EMAIL_PORT = 587
-EMAIL_HOST_TSL = True 
-EMAIL_HOST_PASSWORD = 'sua-senha' 
-"""
+EMAIL_USE_TLS = True 
+
 LOGIN_REDIRECT_URL='ativacao'
