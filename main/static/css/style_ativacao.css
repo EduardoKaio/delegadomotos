@@ -1,7 +1,60 @@
-h1{
-    margin: 100px;
-}
 main{
     width: 80%;
     margin: auto;
+    margin-top: 120px;
+}
+.logout {
+    fill: #cc0000;
+    width: 40px;
+}
+
+.table{
+    margin: 30px 0 100px 0;
+}
+
+.titulos {
+    text-align: center;
+    padding-bottom: 1px;
+
+}
+
+.titulos h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+    position: relative;
+    color: #292929;
+}
+
+.titulos h2::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+}
+
+.titulos h2::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #FFBA0A;
+    bottom: 0;
+    left: calc(50% - 20px);
+}
+
+.sair{
+    display: flex;
+    justify-content: end;
+}
+.visibility{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

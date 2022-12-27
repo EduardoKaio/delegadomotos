@@ -15,8 +15,8 @@ from django.conf import settings
 
 def index(request):
     
-    menor_preco = Moto.objects.all().order_by('preco')[:4]
-    add_recente = Moto.objects.all().order_by('-id')[:4]
+    menor_preco = Moto.objects.filter(is_visibility=True).order_by('preco')[:4]
+    add_recente = Moto.objects.filter(is_visibility=True).order_by('-id')[:4]
 
     form = ContatoForm(request.POST or None)
 
@@ -58,36 +58,58 @@ def index(request):
 
 
 @login_required
-def ativacao(request):
+def lista(request):
     motos = Moto.objects.all()
 
-    form = MotoForm(request.POST or None)
-    if str(request.method) == 'POST':
-        if form.is_valid():
-            form.save()
-            print("Modificação feita com sucesso")
+    # form = MotoForm(request.POST or None)
+    # if str(request.method) == 'POST':
+    #     if form.is_valid():
+    #         form.save()
+    #         print("Modificação feita com sucesso")
 
-        else:
-            print("Modificação falhou")
-            form = MotoForm()
+    #     else:
+    #         print("Modificação falhou")
+    #         form = MotoForm()
+    # else:
+    #     form = MotoForm() 
+
+
+    context = {'motos' : motos, 
+    # 'form' : form
+    }
+    return render(request, 'lista.html', context)
+
+def editar_moto(request, id):
+    moto = Moto.objects.get(id=id)
+    return render(request, 'editar_moto.html', {'moto' : moto})
+
+def update(request, id):
+    
+    modelo = request.POST.get('modelo')
+    cor = request.POST.get('cor')
+    ano = request.POST.get('ano')
+    is_visibility = request.POST.get('is_visibility')
+    
+    if modelo == 'null':
+        modelo = Moto.objects.get(id=id).modelo
+    if cor == 'null':
+        cor = Moto.objects.get(id=id).cor
+    if ano == 'null':
+        ano = Moto.objects.get(ano)
+
+    if is_visibility == 'on':
+        is_visibility = True
     else:
-        form = MotoForm() 
+        is_visibility = False
+    
+    moto = Moto.objects.get(id=id)
+    moto.modelo = modelo
+    moto.cor = cor
+    moto.ano = ano
+    moto.is_visibility = is_visibility
 
-
-    context = {'motos' : motos, 'form' : form}
-    return render(request, 'ativacao.html', context)
-
-# def editar_moto(request, id):
-#     moto = Moto.objects.get(id=id)
-
-#     return render(request, 'editar_moto.html', {'moto' : moto})
-
-# def update(request, id):
-#     is_visibility = request.POST.get('is_visibility')
-#     moto = Moto.objects.get(id=id)
-#     moto.is_visibility = is_visibility
-#     moto.save()
-#     return redirect('ativacao')
+    moto.save()
+    return redirect('lista')
 
 def logout_aplicacao(request):
     logout(request)
@@ -97,7 +119,7 @@ def logout_aplicacao(request):
 def motos(request):
     
     #Inicio 
-    motos = Moto.objects.all().order_by('-id')
+    motos = Moto.objects.filter(is_visibility=True).order_by('-id')
     
     
     cont = 0
@@ -168,7 +190,7 @@ def motos(request):
                 cont = vetor.count(True)
                 print(cont)
                 
-                ate10 = Q(preco__lte=10000)
+                ate10 = Q(preco__lte=10000) 
                 mais10 = Q(preco__gte=10000)
                 honda = Q(marca__icontains='honda')
                 yamaha = Q(marca__icontains='yamaha')
@@ -526,8 +548,8 @@ def motos(request):
 
 def detalhes(request, id):
     moto = Moto.objects.get(id=id)
-    menor_preco = Moto.objects.all().order_by('preco')[:4]
-    add_recente = Moto.objects.all().order_by('-id')[:4]
+    menor_preco = Moto.objects.filter(is_visibility=True).order_by('preco')[:4]
+    add_recente = Moto.objects.filter(is_visibility=True).order_by('-id')[:4]
 
     viewModal = False
 

@@ -45,15 +45,14 @@ class CompraForm(forms.Form):
 class MotoForm(forms.ModelForm):
     class Meta:
         model=Moto
-        fields = ['id', 'modelo', 'ano', 'preco', 'base', 'is_visibility',]
-
+        fields = ['modelo', 'preco','is_visibility',]
+            
         widgets = {
-             'modelo': forms.TextInput(attrs={'class': 'form-control', }),
-             'ano': forms.TextInput(attrs={'class': 'form-control'}),
+             'modelo': forms.TextInput(attrs={'class': 'form-control'}),
              'preco': forms.TextInput(attrs={'class': 'form-control'}),
-             'base': forms.TextInput(attrs={'class': 'form-control'}),
-             'is_visibility': forms.CheckboxInput(attrs={'type': 'checkbox', 'checked': 'moto.is_visibility'}),
+             'is_visibility': forms.CheckboxSelectMultiple(attrs={'type': 'checkbox', 'class': ''}),
          }
+
 
 
 

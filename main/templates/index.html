@@ -146,6 +146,7 @@
             <div class="container">
                 <div class="row">
                     {% for moto in add_recente %}
+                    {% if moto.is_visibility %}
                     <div class="cartao col-xl-3 col-lg-4 col-md-4 col-sm-6 col-8">
                         <a class="" href="{% url 'detalhes' moto.id %}">
                             <div class="card-moto">
@@ -168,6 +169,7 @@
                             </div>
                         </a>
                     </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
 
@@ -179,6 +181,7 @@
             <div class="container">
                 <div class="row">
                     {% for moto in menor_preco %}
+                    {% if moto.is_visibility %}
                     <div class="cartao col-xl-3 col-lg-4 col-md-4 col-sm-6 col-8">
                         <a class="" href="{% url 'detalhes' moto.id %}">
                             <div class="card-moto">
@@ -201,6 +204,7 @@
                             </div>
                         </a>
                     </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
 

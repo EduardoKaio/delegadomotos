@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title%} MOTOS CADASTRADAS {% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/style_ativacao.css' %}">
+{% endblock %}
+
+{% block main %}
+
+<main>
+
+    <div class="titulos">
+        <h2>MOTOS CADASTRADAS</h2>
+    </div>
+    <div class="sair">
+        <a href="{% url 'logout' %}">
+            <svg class="logout" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <g>
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path
+                        d="M5 22a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5zm10-6l5-4-5-4v3H9v2h6v3z" />
+                </g>
+            </svg></a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Cor</th>
+                <th scope="col">Ano</th>
+                <th scope="col">Preco</th>
+                <th scope="col">Data</th>
+                <th scope="col">Visibilidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for moto in motos %}
+            <tr>
+
+                <th id="id" class="id" scope="row">{{ moto.id }}</th>
+                <td> {{ moto.modelo }} </td>
+                <td> {{ moto.cor }} </td>
+                <td> {{ moto.ano }} </td>
+                <td> {{ moto.preco }} </td>
+                <td> {{ moto.base }} </td>
+
+
+                {% if moto.is_visibility %}
+                <td> <img width="20px" src="{% static 'admin/img/icon-yes.svg' %}" alt=""> </td>
+
+                {% else %}
+                <td> <img width="20px" src="{% static 'admin/img/icon-no.svg' %}" alt=""> </td>
+                {% endif %}
+
+                <td>
+                    <a href="{% url 'editar_moto' moto.id %}"><img width="20px" src="{% static 'img/edit.svg' %}"
+                            alt=""></a>
+                </td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+
+</main>
+
+{% endblock %}
+{% block script %}
+<script src="{% static 'js/utils_login.js' %}"></script>
+{% endblock %}

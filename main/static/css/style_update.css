@@ -1,0 +1,103 @@
+body{
+    background-color: rgb(241, 241, 241);
+}
+.update{
+    width: 80%;
+    padding: 5% 0 0;
+    margin: auto;
+
+}
+.form-check-input:checked {
+    background-color: #FFBA0A;
+    border-color: #FFBA0A;
+}
+.form{
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 65%;
+    min-width: 500px;
+    margin: 0 auto 100px;
+    padding: 20px 45px 45px 45px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+}
+.flex{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+.imagem{
+    margin-right: 30px;
+}
+.form h3{
+    text-align: center;
+}
+.salvar{
+    display: flex;
+    justify-content: end;
+}
+.bt-salvar{
+    display: block;
+}
+.preencher{
+    padding: 50px;
+}
+form{
+    margin-top: 20px;
+}
+input{
+    margin: 8px 0 18px 0;
+}
+input[type="checkbox"]{
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+.cor-ano{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.visibilidade{
+    display: flex;
+    flex-direction: column;
+}
+.titulos {
+    text-align: center;
+    padding-bottom: 1px;
+
+}
+.titulos h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+    position: relative;
+    color: #292929;
+}
+
+.titulos h2::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+}
+
+.titulos h2::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #FFBA0A;
+    bottom: 0;
+    left: calc(50% - 20px);
+}
+

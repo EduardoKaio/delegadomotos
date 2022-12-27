@@ -126,10 +126,10 @@
 
         <section class="container-fluid">
           <div class="row d-flex">
+
+
             {% for moto in motos %}
             {% if moto.is_visibility %}
-
-
             <div class="cartao col-xl-3 col-lg-4 col-md-4 col-sm-6 col-8">
 
               <a class="" href="{% url 'detalhes' moto.id %}">
@@ -151,13 +151,14 @@
                   <p class="vista">à vista <span>(com de desconto)</span></p>
                   <p class="prazo">ou 18x de R$ {{ moto.preco|mul:1.025|div:18|floatformat:2 }} com juros</p>
 
-
                 </div>
               </a>
             </div>
             {% endif %}
             {% empty %}
+
             <div class="notfound">
+
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"
                   text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd"
@@ -170,7 +171,11 @@
               </div>
             </div>
 
+
+
+
             {% endfor %}
+
           </div>
         </section>
 
