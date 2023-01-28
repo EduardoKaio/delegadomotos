@@ -4,9 +4,10 @@ services:
     container_name: web
     build: ./docker/nginx
     ports:
-      - 80:80
+      - 81:81
     volumes:
       - static_volume:/home/app/staticfiles
+      - static_media:/home/app/media
     working_dir: /etc/nginx
     links:
       - python
@@ -19,6 +20,7 @@ services:
     # command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - static_volume:/home/app/staticfiles
+      - static_media:/home/app/media
     depends_on:
       mysql:
         condition: service_healthy
@@ -43,3 +45,4 @@ services:
 volumes:
   data-volume:
   static_volume:
+  static_media:

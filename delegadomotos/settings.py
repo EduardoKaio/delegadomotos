@@ -25,11 +25,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # -------------- HOSPEDAGEM ---------------------
-SECRET_KEY = '2003kaio'
-# SECRET_KEY = os.environ.get("SECRET_KEY")
+#SECRET_KEY = '2003kaio'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
-# DEBUG = int(os.environ.get("DEBUG", default=0))
-DEBUG = True
+CSRF_TRUSTED_ORIGINS = ["https://delegadomotos.com.br"]
+
+DEBUG = int(os.environ.get("DEBUG", default=0))
+#DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
@@ -97,18 +99,18 @@ WSGI_APPLICATION = 'delegadomotos.wsgi.application'
 
 DATABASES = {
     'default': {
-#         "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.mysql"),
-#         "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.mysql"),
-#         "USER": os.environ.get("SQL_USER", "user"),
-#         "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
-#         "HOST": os.environ.get("SQL_HOST", "localhost"),
-#         "PORT": os.environ.get("SQL_PORT", "3306"),
-#   }
-         'ENGINE': 'django.db.backends.mysql',
-         'NAME': 'delegadomotos',
-         'USER': 'root',
-         'PASSWORD': '2003kaio',
-     }
+         "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.mysql"),
+         "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.mysql"),
+         "USER": os.environ.get("SQL_USER", "user"),
+         "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+         "HOST": os.environ.get("SQL_HOST", "localhost"),
+         "PORT": os.environ.get("SQL_PORT", "3306"),
+   }
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'delegadomotos',
+#         'USER': 'root',
+#         'PASSWORD': '2003kaio',
+#     }
 }
 
 
@@ -159,21 +161,19 @@ MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-'''
+
 EMAIL_HOST = os.environ.get("EMAIL_HOST")
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = os.environ.get("EMAIL_PORT")
 EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS")
 
-'''
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'delegadomotos@gmail.com'
-EMAIL_HOST_PASSWORD = 'rhuofhjwohzphuvu' 
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True 
-
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_HOST_USER = 'delegadomotos@gmail.com'
+#EMAIL_HOST_PASSWORD = 'rhuofhjwohzphuvu' 
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True 
 
 
-LOGIN_REDIRECT_URL='ativacao'
+LOGIN_REDIRECT_URL='lista'
